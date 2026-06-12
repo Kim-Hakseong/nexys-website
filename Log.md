@@ -62,3 +62,13 @@
 - [DONE] 메인 사례 슬라이더 카드 클릭이 상세로 이동하지 않던 버그 수정 (setPointerCapture가 클릭을 track으로 가로채던 문제 → 문서 레벨 포인터 리스너 + 변위 임계값으로 교체)
 - [DONE] 헤더 '사업영역' → `/business` 개요 페이지로 변경. 시스템/엔지니어링/국방항공 3개 사업부 카드 → 각 페이지로 이동 (`BusinessIndexView`)
 - [DECISION] 원본 mp4(etc/*.mp4)는 .gitignore — 최적화본은 public/videos에 포함
+
+## 2026-06-12 — 세션 1 (추가 3): 히어로 영상 진단 + 사례 상세 Perigee 스타일 개편
+- [확인] 히어로 영상은 라이브에서 정상 재생·순환(hero-1→hero-2) 검증됨. "사진 그대로"로 보인 원인: 사용자가 지정한 clip A(A_cinematic_aerial)가 기존 정적 이미지(hero-uav)와 **동일한 드론 장면**(움직이는 버전)이라 첫 ~10초가 같아 보임. 자동재생 차단 브라우저(Safari 저전력 등)에선 포스터(=같은 드론 프레임)로 멈춤
+- [DONE] 자동재생 강건화: muted/defaultMuted 명시 + 상호작용 폴백 + 0.3/0.9/1.8s 재시도
+- [DONE] **구축사례 상세 페이지 Perigee 스타일 전면 개편**(13개 공통 템플릿):
+  - 시네마틱 풀블리드 패럴럭스 히어로(스크롤 시 이미지 scale/parallax, 타이틀 모핑 페이드, 대형 케이스번호 워터마크)
+  - 초대형 디스플레이 타이포 + 넉넉한 여백, sticky 라벨 개요
+  - 기술 사양 스펙시트(key-value), 시스템 구성/특징 넘버드 리스트(스크롤 reveal)
+  - 풀블리드 패럴럭스 피규어 3컷 인터리브
+  - Framer Motion useScroll/useTransform 사용, prefers-reduced-motion 대응, KO/EN 유지
