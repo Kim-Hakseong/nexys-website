@@ -5,7 +5,7 @@ export const SITE = {
   nameKr: "(주)넥시스",
   fullName: "NEXYS — New Experiment System",
   slogan: "Trust Your Idea & Technology",
-  desc: "(주)넥시스 — 방산·항공우주 시험계측 전문기업. HILS·SIL 시스템, 시험 자동화, 제어계측 엔지니어링.",
+  desc: "(주)넥시스 — 국방·항공우주 시험계측 전문기업. HILS·SIL 시스템, 시험 자동화, 제어계측 엔지니어링.",
   url: "https://www.i-nexys.com",
   tel: "042-932-0213",
   fax: "042-932-0214",

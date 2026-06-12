@@ -45,7 +45,7 @@ const TIMELINE: {
       { m: "06", e: "공장설립 및 직접생산증명 확인 (패키지 소프트웨어)", eEn: "Factory established; direct-production certification (packaged software)" },
       { m: "08", e: "벤처기업 인증 (기술보증)", eEn: "Venture business certification (technology guarantee)" },
       { m: "09", e: "대전지능로봇센터 본사 이전 및 기업부설연구소 설립", eEn: "HQ moved to Daejeon Intelligent Robot Center; in-house R&D institute established" },
-      { m: "11", e: "현대로템㈜ 방산 협력업체 등록", eEn: "Registered as Hyundai Rotem defense supplier" },
+      { m: "11", e: "현대로템㈜ 국방 협력업체 등록", eEn: "Registered as Hyundai Rotem defense supplier" },
     ],
   },
   {
@@ -216,7 +216,7 @@ export default function CompanyView() {
                 </p>
                 <p>
                   {t(
-                    "방산·항공우주 분야의 HILS·SIL 시스템, 시험 자동화 및 제어계측 엔지니어링을 설계·구축하며, 시스템 설계부터 HMI S/W 개발, 전·계장 공사에 이르는 통합 솔루션을 한 팀에서 완성합니다.",
+                    "국방·항공우주 분야의 HILS·SIL 시스템, 시험 자동화 및 제어계측 엔지니어링을 설계·구축하며, 시스템 설계부터 HMI S/W 개발, 전·계장 공사에 이르는 통합 솔루션을 한 팀에서 완성합니다.",
                     "We design and build HILS·SIL systems, test automation and control & instrumentation engineering for defense and aerospace — completing integrated solutions from system design and HMI software to E&I works, all in one team."
                   )}
                 </p>

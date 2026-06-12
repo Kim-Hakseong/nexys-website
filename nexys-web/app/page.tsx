@@ -44,7 +44,7 @@ const CHALLENGES = [
 ];
 
 const STATS = [
-  { to: 9, u: "년+", uEn: "yrs+", label: "방산·항공 시험계측 업력", labelEn: "Years in defense·aerospace T&M" },
+  { to: 9, u: "년+", uEn: "yrs+", label: "국방·항공 시험계측 업력", labelEn: "Years in defense·aerospace T&M" },
   { to: 13, u: "+", uEn: "+", label: "주요 시스템 구축 사례", labelEn: "Major systems delivered" },
   { to: 15, u: "+", uEn: "+", label: "국방·항공·에너지 파트너", labelEn: "Defense·aerospace·energy partners" },
   { to: 3, u: "종", uEn: "", label: "ISO 9001·14001·45001 인증", labelEn: "ISO 9001·14001·45001 certified" },
@@ -86,7 +86,7 @@ export default function Home() {
               <p>
                 {t(
                   <>
-                    넥시스는 방산·항공우주 분야의 HILS·SIL 시스템과
+                    넥시스는 국방·항공우주 분야의 HILS·SIL 시스템과
                     <br className="d-only" /> 시험 자동화 엔지니어링을 설계·구축하는
                     시험계측 전문기업입니다.
                   </>,
@@ -133,7 +133,7 @@ export default function Home() {
               <h2 className="h-lg mt-m">
                 {t(
                   <>
-                    방산·항공 시험 현장이
+                    국방·항공 시험 현장이
                     <br />
                     마주한 네 가지 난제
                   </>,

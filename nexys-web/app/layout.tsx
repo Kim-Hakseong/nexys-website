@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     "SIL",
     "시험자동화",
     "Test Automation",
-    "방산",
+    "국방",
     "항공우주",
     "제어계측",
     "FLCC",

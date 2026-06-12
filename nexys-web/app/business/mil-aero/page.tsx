@@ -14,7 +14,7 @@ const data: BusinessData = {
   en: "MIL · Aerospace Tech Center",
   eyebrow: "Business — 기업부설연구소",
   eyebrowEn: "Business — In-house R&D Institute",
-  lead: "유·무인기 비행제어 HILS부터 무기체계 점검장비, 탑재 센서·PCB 설계까지. 방산·항공우주 분야의 핵심 시험계측 기술을 연구·개발하는 기업부설연구소입니다.",
+  lead: "유·무인기 비행제어 HILS부터 무기체계 점검장비, 탑재 센서·PCB 설계까지. 국방·항공우주 분야의 핵심 시험계측 기술을 연구·개발하는 기업부설연구소입니다.",
   leadEn: "From flight-control HILS for UAV/manned aircraft to weapon-system test equipment and onboard sensor/PCB design — an in-house R&D institute developing core test & measurement technology for defense and aerospace.",
   intro: "수입 의존도가 높은 HILS·점검장비 플랫폼을 국산 기술로 대체하고, 검증되지 않은 위험을 시험실 안에서 끝내는 것. 넥시스 국방·항공기술 연구소가 매일 한 발 더 내딛는 이유입니다.",
   introEn: "Replacing import-dependent HILS and test-equipment platforms with domestic technology, and ending unverified risk inside the lab — that is why the NEXYS MIL·Aerospace Tech Center steps forward every day.",
