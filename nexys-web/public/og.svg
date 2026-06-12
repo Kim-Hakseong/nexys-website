@@ -6,16 +6,16 @@
       <stop offset="1" stop-color="#000000"/>
     </linearGradient>
     <radialGradient id="glow" cx="0.82" cy="0.12" r="0.6">
-      <stop offset="0" stop-color="#350a03" stop-opacity="0.28"/>
-      <stop offset="1" stop-color="#350a03" stop-opacity="0"/>
+      <stop offset="0" stop-color="#7a1020" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#7a1020" stop-opacity="0"/>
     </radialGradient>
   </defs>
   <rect width="1200" height="630" fill="url(#bg)"/>
   <rect width="1200" height="630" fill="url(#glow)"/>
-  <rect x="90" y="150" width="64" height="4" fill="#350a03"/>
+  <rect x="90" y="150" width="64" height="4" fill="#7a1020"/>
   <text x="88" y="148" fill="#f4f3f0" font-family="Archivo, Arial, sans-serif" font-size="30" font-weight="600" letter-spacing="6">MILITARY &amp; AEROSPACE TEST SOLUTION</text>
   <text x="84" y="320" fill="#FAFAFA" font-family="Archivo, Arial, sans-serif" font-size="150" font-weight="800" letter-spacing="-6">NEXYS</text>
-  <text x="90" y="410" fill="#f4f3f0" font-family="Archivo, Arial, sans-serif" font-size="52" font-weight="700">Trust Your Idea &amp; <tspan fill="#350a03">Technology</tspan></text>
+  <text x="90" y="410" fill="#f4f3f0" font-family="Archivo, Arial, sans-serif" font-size="52" font-weight="700">Trust Your Idea &amp; <tspan fill="#7a1020">Technology</tspan></text>
   <text x="90" y="495" fill="#8A8A90" font-family="Arial, sans-serif" font-size="30" font-weight="400">HILS · SIL · Test Automation · 제어계측 전문기업</text>
   <text x="90" y="560" fill="#8A8A90" font-family="Arial, sans-serif" font-size="24">(주)넥시스 — New Experiment System · EST. 2017 · DAEJEON, KR</text>
 </svg>
