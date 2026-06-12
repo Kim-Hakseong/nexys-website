@@ -745,3 +745,12 @@ body.menu-open .consult { display: none; }
 .solution__media .ph { position: absolute; inset: 0; }
 .solution .solution__foot .link-arrow { color: var(--t-on-dark); }
 .solution:hover .solution__foot .arr { transform: translateX(5px); }
+
+/* ============ Company/Work 다크 통일 — 라이트용 컴포넌트 색상 보정 ============ */
+.section--ink .greeting__body, .section--dark .greeting__body { color: var(--t-on-dark-dim); }
+.section--ink .greeting__sign b, .section--dark .greeting__sign b { color: var(--t-on-dark); }
+.section--ink .greeting__sign span, .section--dark .greeting__sign span { color: var(--t-on-dark-dim); }
+.section--ink .gcard__desc, .section--dark .gcard__desc { color: var(--t-on-dark-dim); }
+.section--ink .filter button, .section--dark .filter button { border-color: var(--line-dark-2); color: var(--t-on-dark-dim); }
+.section--ink .filter button:hover, .section--dark .filter button:hover { border-color: #fff; color: #fff; }
+.section--ink .filter button.is-active, .section--dark .filter button.is-active { color: #fff; }

@@ -25,10 +25,10 @@ export default function CasesView() {
               <>
                 현장에서
                 <br />
-                검증된 <em className="accent">13</em>개의 시스템
+                검증된 시스템
               </>,
               <>
-                <em className="accent">13</em> field-proven
+                Field-proven
                 <br />
                 systems we built
               </>
@@ -43,7 +43,7 @@ export default function CasesView() {
         </div>
       </section>
 
-      <section className="section section--paper">
+      <section className="section section--ink">
         <div className="wrap">
           <CasesFilter />
         </div>

@@ -180,11 +180,11 @@ export default function CompanyView() {
       </section>
 
       {/* GREETING */}
-      <section className="section section--white">
+      <section className="section section--ink">
         <div className="wrap">
           <div className="greeting">
             <Reveal className="greeting__media">
-              <Ph src="/images/engine.jpg" alt={en ? "R&D facility" : "연구소 전경"} light />
+              <Ph src="/images/engine.jpg" alt={en ? "R&D facility" : "연구소 전경"} />
             </Reveal>
             <Reveal delay={1}>
               <span className="eyebrow">Greeting</span>
@@ -272,7 +272,7 @@ export default function CompanyView() {
       </section>
 
       {/* TIMELINE */}
-      <section className="section section--paper" id="history">
+      <section className="section section--ink" id="history">
         <div className="wrap">
           <div className="sec-head--split sec-head">
             <Reveal>
