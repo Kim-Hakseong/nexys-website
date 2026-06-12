@@ -805,3 +805,7 @@ body.menu-open .consult { display: none; }
 .timeline--scroll .tl-row { position: relative; }
 .tl-node { position:absolute; left:-31px; top: clamp(30px,3.6vw,49px); width:12px; height:12px; border-radius:50%; background: var(--ink); border:2px solid rgba(255,255,255,.28); z-index:1; }
 @media(max-width:680px){ .timeline--scroll { padding-left: 26px; } .timeline__track { left:5px; } .tl-node { left:-24px; width:10px; height:10px; } }
+
+/* NI Official Alliance 배지 (인스타 아이콘 우측) */
+.nav__util .ni-badge { height: 20px; width: auto; display: block; opacity: .92; }
+.mobile-menu__util .ni-badge { height: 22px; width: auto; display: block; opacity: .92; }

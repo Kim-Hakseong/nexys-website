@@ -110,6 +110,11 @@ export default function Header() {
               >
                 <InstagramIcon />
               </a>
+              <img
+                className="ni-badge"
+                src={asset("/images/ni-alliance.png")}
+                alt="NI Official Alliance Partner"
+              />
             </div>
           </div>
 
@@ -148,6 +153,11 @@ export default function Header() {
             <InstagramIcon />
             <span>Instagram</span>
           </a>
+          <img
+            className="ni-badge"
+            src={asset("/images/ni-alliance.png")}
+            alt="NI Official Alliance Partner"
+          />
         </div>
         <div className="mobile-menu__foot">
           <span>TEL {SITE.tel}</span>
