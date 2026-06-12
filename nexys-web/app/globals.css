@@ -722,3 +722,13 @@ body.menu-open .consult { display: none; }
 .consult__txt b { font-family: var(--display); font-weight: 700; font-size: 14.5px; display: block; }
 .consult__txt small { color: var(--t-on-dark-faint); font-size: 12px; }
 @media (max-width: 600px){ .consult__fab { width: 54px; height: 54px; } }
+
+/* ---- Hero background video (crossfade A → B) ---- */
+.hero__img { opacity: 0; transition: opacity 1s ease; }
+.hero__img.is-active { opacity: 1; }
+video.hero__img { background: #0b0b0c; }
+
+/* Business overview — solution 카드 미디어 채움 */
+.solution__media .ph { position: absolute; inset: 0; }
+.solution .solution__foot .link-arrow { color: var(--t-on-dark); }
+.solution:hover .solution__foot .arr { transform: translateX(5px); }

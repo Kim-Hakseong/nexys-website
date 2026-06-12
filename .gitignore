@@ -7,3 +7,6 @@ nexys-web/node_modules/
 nexys-web/.next/
 nexys-web/out/
 *.tsbuildinfo
+
+# source videos (optimized copies live in nexys-web/public/videos)
+etc/*.mp4

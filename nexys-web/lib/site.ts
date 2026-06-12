@@ -21,7 +21,7 @@ export const SITE = {
 
 export const NAV = [
   { href: "/company", label: "회사소개", labelEn: "Company" },
-  { href: "/business/mil-aero", label: "사업영역", labelEn: "Business" },
+  { href: "/business", label: "사업영역", labelEn: "Business" },
   { href: "/cases", label: "구축 사례", labelEn: "Work" },
   { href: "/contact", label: "문의", labelEn: "Contact" },
 ] as const;

@@ -11,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/company",
     "/cases",
     "/contact",
+    "/business",
     "/business/mil-aero",
     "/business/system",
     "/business/engineering",

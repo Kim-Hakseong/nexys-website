@@ -54,3 +54,11 @@
   - 검증: 토글 시 nav/히어로/사례/필터/연혁 등 전 영역 영문 전환 + 페이지 이동 후 언어 유지 확인
 - [DONE] 우측 하단 고정 상담 위젯(`ConsultWidget`) — '...' FAB → 팝업(실시간 문의 / 카카오톡 상담 / 이메일 문의). **UI만**, 실시간·카카오 실제 연동은 TODO(`data-todo`)
 - [TODO] 상담 위젯 실시간 채팅 / 카카오톡 채널 실제 연동 (현재 모양만)
+
+## 2026-06-12 — 세션 1 (추가 2): 메인 영상/구조 개편
+- [DONE] 히어로 배경: 정적 무인기 이미지 → **영상 2종 시퀀스**(hero-1 A_cinematic → hero-2 NI PXI → 반복). ffmpeg로 H.264/CRF30 최적화(각 ~0.8–0.9MB), 포스터 이미지 + prefers-reduced-motion 시 정지 이미지. `HeroVideo` 컴포넌트
+- [DECISION] gif 대신 MP4 video 채택 — 동일 품질에서 용량 1/10 수준, 웹 최적화
+- [DONE] 메인 "The Problem" 섹션 제거 → 히어로 다음 바로 Today's Challenges
+- [DONE] 메인 사례 슬라이더 카드 클릭이 상세로 이동하지 않던 버그 수정 (setPointerCapture가 클릭을 track으로 가로채던 문제 → 문서 레벨 포인터 리스너 + 변위 임계값으로 교체)
+- [DONE] 헤더 '사업영역' → `/business` 개요 페이지로 변경. 시스템/엔지니어링/국방항공 3개 사업부 카드 → 각 페이지로 이동 (`BusinessIndexView`)
+- [DECISION] 원본 mp4(etc/*.mp4)는 .gitignore — 최적화본은 public/videos에 포함

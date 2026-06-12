@@ -8,6 +8,7 @@ import { useLang } from "@/lib/i18n";
 
 export default function CaseSlider() {
   const { lang } = useLang();
+  const en = lang === "en";
   const trackRef = useRef<HTMLDivElement>(null);
   const [barStyle, setBarStyle] = useState({ width: "20%", left: "0%" });
   const [atStart, setAtStart] = useState(true);
@@ -33,6 +34,31 @@ export default function CaseSlider() {
     window.addEventListener("resize", update);
     return () => window.removeEventListener("resize", update);
   }, [update]);
+
+  // 드래그 스크롤 — 문서 레벨 리스너 + 변위 임계값.
+  // setPointerCapture를 쓰지 않아 클릭이 정상적으로 <Link>로 전달됨(카드 클릭 → 상세 이동).
+  useEffect(() => {
+    const onMove = (e: PointerEvent) => {
+      if (!drag.current.down) return;
+      const dx = e.clientX - drag.current.startX;
+      drag.current.moved = Math.max(drag.current.moved, Math.abs(dx));
+      if (trackRef.current) trackRef.current.scrollLeft = drag.current.startScroll - dx;
+    };
+    const onUp = () => {
+      if (!drag.current.down) return;
+      drag.current.down = false;
+      trackRef.current?.classList.remove("dragging");
+      // moved 값은 직후의 click 캡처에서 사용 후 다음 down에서 초기화
+    };
+    window.addEventListener("pointermove", onMove, { passive: true });
+    window.addEventListener("pointerup", onUp);
+    window.addEventListener("pointercancel", onUp);
+    return () => {
+      window.removeEventListener("pointermove", onMove);
+      window.removeEventListener("pointerup", onUp);
+      window.removeEventListener("pointercancel", onUp);
+    };
+  }, []);
 
   const stepSize = () => {
     const track = trackRef.current;
@@ -61,24 +87,13 @@ export default function CaseSlider() {
             moved: 0,
           };
           t.classList.add("dragging");
-          t.setPointerCapture(e.pointerId);
-        }}
-        onPointerMove={(e) => {
-          if (!drag.current.down) return;
-          const dx = e.clientX - drag.current.startX;
-          drag.current.moved += Math.abs(dx);
-          trackRef.current!.scrollLeft = drag.current.startScroll - dx;
-        }}
-        onPointerUp={() => {
-          drag.current.down = false;
-          trackRef.current?.classList.remove("dragging");
-        }}
-        onPointerCancel={() => {
-          drag.current.down = false;
-          trackRef.current?.classList.remove("dragging");
         }}
         onClickCapture={(e) => {
-          if (drag.current.moved > 8) e.preventDefault();
+          // 실제로 끌었을 때만 클릭(내비게이션) 차단
+          if (drag.current.moved > 6) {
+            e.preventDefault();
+            e.stopPropagation();
+          }
         }}
       >
         {CASES.map((c) => (
@@ -93,7 +108,7 @@ export default function CaseSlider() {
                 <img
                   className="ph__img"
                   src={asset(c.image)}
-                  alt={lang === "en" ? c.titleEn : c.title}
+                  alt={en ? c.titleEn : c.title}
                   loading="lazy"
                   draggable={false}
                 />
@@ -104,11 +119,9 @@ export default function CaseSlider() {
             <div className="case-card__body">
               <span className="case-card__cat">{c.cat}</span>
               <h3 className="case-card__title">
-                {lang === "en" ? c.titleEn : c.title}
+                {en ? c.titleEn : c.title}
               </h3>
-              <p className="case-card__desc">
-                {lang === "en" ? c.descEn : c.desc}
-              </p>
+              <p className="case-card__desc">{en ? c.descEn : c.desc}</p>
             </div>
           </Link>
         ))}
@@ -121,7 +134,7 @@ export default function CaseSlider() {
         <div className="slider__btns">
           <button
             className="sld-btn"
-            aria-label="이전"
+            aria-label={en ? "Previous" : "이전"}
             disabled={atStart}
             onClick={() => go(-1)}
           >
@@ -129,7 +142,7 @@ export default function CaseSlider() {
           </button>
           <button
             className="sld-btn"
-            aria-label="다음"
+            aria-label={en ? "Next" : "다음"}
             disabled={atEnd}
             onClick={() => go(1)}
           >

@@ -40,7 +40,7 @@ export default function Footer() {
           </div>
           <div className="footer__col">
             <h4>Work</h4>
-            <Link href="/business/mil-aero">{t("사업영역", "Business")}</Link>
+            <Link href="/business">{t("사업영역", "Business")}</Link>
             <Link href="/cases">{t("구축 사례", "Work")}</Link>
             <Link href="/business/system">{t("시스템 사업부", "System Dept.")}</Link>
             <Link href="/business/engineering">

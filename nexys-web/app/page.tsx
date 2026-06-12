@@ -7,6 +7,7 @@ import Industries from "@/components/Industries";
 import CaseSlider from "@/components/CaseSlider";
 import CountUp from "@/components/CountUp";
 import { CtaBand } from "@/components/ui";
+import HeroVideo from "@/components/HeroVideo";
 import { PARTNERS } from "@/lib/site";
 import { asset } from "@/lib/asset";
 import { useLang } from "@/lib/i18n";
@@ -59,7 +60,7 @@ export default function Home() {
       {/* HERO */}
       <section className="hero">
         <div className="hero__bg">
-          <img className="hero__img" src={asset("/images/hero-uav.jpg")} alt="" />
+          <HeroVideo />
           <div className="hero__grain"></div>
           <div className="hero__scan"></div>
         </div>
@@ -109,61 +110,6 @@ export default function Home() {
         </div>
         <div className="scroll-cue">
           <span className="bar"></span> SCROLL
-        </div>
-      </section>
-
-      {/* THE PROBLEM */}
-      <section className="section section--ink">
-        <div className="wrap">
-          <div className="grid-2" style={{ alignItems: "start" }}>
-            <Reveal>
-              <span className="eyebrow">The Problem</span>
-              <h2 className="h-xl mt-m">
-                {t(
-                  <>
-                    실장비 시험은
-                    <br />
-                    비싸고, 위험하고,
-                    <br />
-                    <em className="accent">반복할 수 없습니다.</em>
-                  </>,
-                  <>
-                    Real-hardware testing is
-                    <br />
-                    costly, risky, and
-                    <br />
-                    <em className="accent">impossible to repeat.</em>
-                  </>
-                )}
-              </h2>
-            </Reveal>
-            <Reveal delay={1} style={{ alignSelf: "center" }}>
-              <p className="lead body-dim">
-                {t(
-                  "항공기·무인기·발사체의 제어 시스템은 단 한 번의 결함도 허용되지 않습니다. 그러나 실제 장비로 모든 조건을 반복 시험하는 것은 막대한 비용과 안전 리스크를 동반합니다.",
-                  "Control systems for aircraft, UAVs and launch vehicles allow no single fault. Yet testing every condition on real hardware carries enormous cost and safety risk."
-                )}
-              </p>
-              <p className="body-dim mt-m" style={{ fontSize: 16 }}>
-                {t(
-                  <>
-                    넥시스는 실장비를 대신할 정밀한 시험 환경을 구축해,{" "}
-                    <em className="accent">
-                      검증되지 않은 위험을 시험실 안에서 끝내는
-                    </em>{" "}
-                    일을 합니다.
-                  </>,
-                  <>
-                    NEXYS builds precise test environments that stand in for the
-                    real hardware, so that{" "}
-                    <em className="accent">
-                      unverified risk ends inside the lab.
-                    </em>
-                  </>
-                )}
-              </p>
-            </Reveal>
-          </div>
         </div>
       </section>
 
