@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#16171a"/>
+      <stop offset="0.55" stop-color="#0b0b0c"/>
+      <stop offset="1" stop-color="#000000"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.82" cy="0.12" r="0.6">
+      <stop offset="0" stop-color="#E60012" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#E60012" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <rect x="90" y="150" width="64" height="4" fill="#E60012"/>
+  <text x="88" y="148" fill="#f4f3f0" font-family="Archivo, Arial, sans-serif" font-size="30" font-weight="600" letter-spacing="6">MILITARY &amp; AEROSPACE TEST SOLUTION</text>
+  <text x="84" y="320" fill="#FAFAFA" font-family="Archivo, Arial, sans-serif" font-size="150" font-weight="800" letter-spacing="-6">NEXYS</text>
+  <text x="90" y="410" fill="#f4f3f0" font-family="Archivo, Arial, sans-serif" font-size="52" font-weight="700">Trust Your Idea &amp; <tspan fill="#E60012">Technology</tspan></text>
+  <text x="90" y="495" fill="#8A8A90" font-family="Arial, sans-serif" font-size="30" font-weight="400">HILS · SIL · Test Automation · 제어계측 전문기업</text>
+  <text x="90" y="560" fill="#8A8A90" font-family="Arial, sans-serif" font-size="24">(주)넥시스 — New Experiment System · EST. 2017 · DAEJEON, KR</text>
+</svg>
