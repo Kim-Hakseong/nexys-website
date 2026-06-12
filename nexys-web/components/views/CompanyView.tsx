@@ -2,7 +2,9 @@
 
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
-import { Ph, CtaBand } from "@/components/ui";
+import { CtaBand } from "@/components/ui";
+import ParallaxImage from "@/components/ParallaxImage";
+import Timeline from "@/components/Timeline";
 import { useLang } from "@/lib/i18n";
 
 const VALUES = [
@@ -184,7 +186,11 @@ export default function CompanyView() {
         <div className="wrap">
           <div className="greeting">
             <Reveal className="greeting__media">
-              <Ph src="/images/engine.jpg" alt={en ? "R&D facility" : "연구소 전경"} />
+              <ParallaxImage
+                src="/images/engine.jpg"
+                alt={en ? "R&D facility" : "연구소 전경"}
+                amount={9}
+              />
             </Reveal>
             <Reveal delay={1}>
               <span className="eyebrow">Greeting</span>
@@ -300,24 +306,7 @@ export default function CompanyView() {
             </Reveal>
           </div>
 
-          <div className="timeline">
-            {TIMELINE.map((row) => (
-              <Reveal className="tl-row" key={row.year}>
-                <div className="tl-year">
-                  {row.year}
-                  <span className="dot"></span>
-                </div>
-                <div className="tl-events">
-                  {row.events.map((ev, i) => (
-                    <div className={`tl-event${ev.key ? " is-key" : ""}`} key={i}>
-                      <span className="m">{ev.m}</span>
-                      <span className="e">{en ? ev.eEn : ev.e}</span>
-                    </div>
-                  ))}
-                </div>
-              </Reveal>
-            ))}
-          </div>
+          <Timeline rows={TIMELINE} en={en} />
         </div>
       </section>
 

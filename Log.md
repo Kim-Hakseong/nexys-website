@@ -84,3 +84,10 @@
 - [DONE] 레드(#E60012) 축소: 텍스트 강조 `.accent`/`em.accent` → inherit(다크=화이트), Industries 타이틀 `.ind-title` → 화이트(점 포함). 버튼/뱃지 등 기능 레드는 유지
 - [DONE] 상단 메뉴 영문 통일(Company/Business/Work/Contact/Inquiry) + **가운데 정렬**(로고 좌 / 메뉴 중앙 / Inquiry·KO/EN·IG 우)
 - [DONE] 타이포 정제: eyebrow 자간 .14→.22em
+
+## 2026-06-12 — 세션 1 (추가 6): 메인 구조 개편 + 스크롤 인터랙션
+- [DONE] 히어로 서브카피 첫 문장("실장비 없이 검증하고...") 삭제
+- [DONE] 메인 섹션 순서 교체: Today's Challenges ↔ Industries (이제 히어로 다음 Industries)
+- [DONE] Industries를 제시 코드 스타일로 전면 변경: 분야 탭(국방·항공우주/에너지·산업) + 좌측 세로 인터랙티브 리스트(hover시 desc 확장·레드 마커) + 우측 sticky 비주얼 패널(이미지·태그·스펙칩·사례 링크). 실제 13개 사례 데이터/링크 사용
+- [DONE] 이미지 스크롤 모핑(parallax): `ParallaxImage`(Framer useScroll) — 챌린지 미디어, 회사소개 인사말 이미지에 적용
+- [DONE] 회사소개 History 타임라인 스크롤 인터랙티브: 스크롤 진행에 따라 좌측 레드 라인이 채워짐(`Timeline` + useScroll scaleY) + 연도 노드

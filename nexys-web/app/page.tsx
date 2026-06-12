@@ -6,6 +6,7 @@ import Accordion from "@/components/Accordion";
 import Industries from "@/components/Industries";
 import CaseSlider from "@/components/CaseSlider";
 import CountUp from "@/components/CountUp";
+import ParallaxImage from "@/components/ParallaxImage";
 import { CtaBand } from "@/components/ui";
 import { PARTNERS } from "@/lib/site";
 import { asset } from "@/lib/asset";
@@ -85,13 +86,11 @@ export default function Home() {
               <p>
                 {t(
                   <>
-                    실장비 없이 검증하고, 위험 없이 시험합니다. 넥시스는
-                    방산·항공우주 분야의
-                    <br className="d-only" /> HILS·SIL 시스템과 시험 자동화
-                    엔지니어링을 설계·구축하는 시험계측 전문기업입니다.
+                    넥시스는 방산·항공우주 분야의 HILS·SIL 시스템과
+                    <br className="d-only" /> 시험 자동화 엔지니어링을 설계·구축하는
+                    시험계측 전문기업입니다.
                   </>,
                   <>
-                    Verify without the real hardware, test without the risk.
                     NEXYS designs and builds HILS·SIL systems
                     <br className="d-only" /> and test-automation engineering for
                     the defense and aerospace industries.
@@ -115,6 +114,13 @@ export default function Home() {
         </div>
         <div className="scroll-cue">
           <span className="bar"></span> SCROLL
+        </div>
+      </section>
+
+      {/* INDUSTRIES (대표 사례) */}
+      <section className="section section--ink" id="solution">
+        <div className="wrap">
+          <Industries />
         </div>
       </section>
 
@@ -147,23 +153,9 @@ export default function Home() {
               />
             </Reveal>
             <Reveal className="chal-media" delay={1}>
-              <div className="ph">
-                <img
-                  className="ph__img"
-                  src={asset("/images/engine.jpg")}
-                  alt="FIELD"
-                  loading="lazy"
-                />
-              </div>
+              <ParallaxImage src="/images/engine.jpg" alt="FIELD" amount={10} />
             </Reveal>
           </div>
-        </div>
-      </section>
-
-      {/* INDUSTRIES */}
-      <section className="section section--ink" id="solution">
-        <div className="wrap">
-          <Industries />
         </div>
       </section>
 
