@@ -13,13 +13,17 @@ export const SITE = {
   addr: "대전광역시 유성구 테크노2로 199, 미건테크노월드 1차 407호",
   addrLine1: "대전광역시 유성구 테크노2로 199",
   addrLine2: "미건테크노월드 1차 407호",
+  addrEn: "407, Migun Techno World 1, 199 Techno 2-ro, Yuseong-gu, Daejeon, Korea",
+  addrEnLine1: "199 Techno 2-ro, Yuseong-gu, Daejeon",
+  addrEnLine2: "407, Migun Techno World 1",
+  instagram: "https://www.instagram.com/nexyskorea/",
 } as const;
 
 export const NAV = [
-  { href: "/company", label: "회사소개" },
-  { href: "/business/mil-aero", label: "사업영역" },
-  { href: "/cases", label: "구축 사례" },
-  { href: "/contact", label: "문의" },
+  { href: "/company", label: "회사소개", labelEn: "Company" },
+  { href: "/business/mil-aero", label: "사업영역", labelEn: "Business" },
+  { href: "/cases", label: "구축 사례", labelEn: "Work" },
+  { href: "/contact", label: "문의", labelEn: "Contact" },
 ] as const;
 
 export const PARTNERS = [
@@ -39,7 +43,22 @@ export const PARTNERS = [
 ] as const;
 
 export const BUSINESS = [
-  { href: "/business/mil-aero", label: "국방·항공기술 연구소", en: "MIL · Aerospace" },
-  { href: "/business/system", label: "시스템 사업부", en: "System Dept." },
-  { href: "/business/engineering", label: "엔지니어링 사업부", en: "Engineering Dept." },
+  {
+    href: "/business/mil-aero",
+    label: "국방·항공기술 연구소",
+    labelEn: "MIL · Aerospace Tech Center",
+    en: "MIL · Aerospace",
+  },
+  {
+    href: "/business/system",
+    label: "시스템 사업부",
+    labelEn: "System Dept.",
+    en: "System Dept.",
+  },
+  {
+    href: "/business/engineering",
+    label: "엔지니어링 사업부",
+    labelEn: "Engineering Dept.",
+    en: "Engineering Dept.",
+  },
 ] as const;

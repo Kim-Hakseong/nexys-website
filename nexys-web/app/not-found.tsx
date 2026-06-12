@@ -1,11 +1,13 @@
-import type { Metadata } from "next";
-import Link from "next/link";
+"use client";
 
-export const metadata: Metadata = {
-  title: "페이지를 찾을 수 없습니다 (404)",
-};
+import Link from "next/link";
+import { useLang } from "@/lib/i18n";
 
 export default function NotFound() {
+  const { lang } = useLang();
+  const en = lang === "en";
+  const t = (ko: string, e: string) => (en ? e : ko);
+
   return (
     <section
       className="page-hero"
@@ -19,18 +21,20 @@ export default function NotFound() {
           4<em className="accent">0</em>4
         </h1>
         <p className="lead" style={{ maxWidth: 560 }}>
-          요청하신 페이지를 찾을 수 없습니다. 주소가 변경되었거나 삭제되었을 수
-          있습니다.
+          {t(
+            "요청하신 페이지를 찾을 수 없습니다. 주소가 변경되었거나 삭제되었을 수 있습니다.",
+            "The page you requested could not be found. It may have moved or been removed."
+          )}
         </p>
         <div
           className="hero__cta"
           style={{ display: "flex", gap: 14, flexWrap: "wrap", marginTop: 38 }}
         >
           <Link className="btn btn--lg btn--primary" href="/">
-            홈으로 <span className="arr">→</span>
+            {t("홈으로", "Back home")} <span className="arr">→</span>
           </Link>
           <Link className="btn btn--lg" href="/cases">
-            구축 사례 보기 <span className="arr">→</span>
+            {t("구축 사례 보기", "View work")} <span className="arr">→</span>
           </Link>
         </div>
       </div>

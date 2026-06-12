@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import ConsultWidget from "@/components/ConsultWidget";
+import { LangProvider } from "@/lib/i18n";
 import { SITE } from "@/lib/site";
 import { asset } from "@/lib/asset";
 
@@ -56,9 +58,12 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body>
-        <Header />
-        <main>{children}</main>
-        <Footer />
+        <LangProvider>
+          <Header />
+          <main>{children}</main>
+          <Footer />
+          <ConsultWidget />
+        </LangProvider>
       </body>
     </html>
   );

@@ -4,9 +4,12 @@ import { useState } from "react";
 import Link from "next/link";
 import { CASES, FILTERS, type CaseCategory } from "@/lib/cases-data";
 import { asset } from "@/lib/asset";
+import { useLang } from "@/lib/i18n";
 
 export default function CasesFilter() {
   const [active, setActive] = useState<"all" | CaseCategory>("all");
+  const { lang } = useLang();
+  const en = lang === "en";
 
   return (
     <>
@@ -17,7 +20,7 @@ export default function CasesFilter() {
             className={active === f.cat ? "is-active" : undefined}
             onClick={() => setActive(f.cat)}
           >
-            {f.label}
+            {en ? f.labelEn : f.label}
           </button>
         ))}
       </div>
@@ -37,7 +40,7 @@ export default function CasesFilter() {
                   <img
                     className="ph__img"
                     src={asset(c.image)}
-                    alt={c.title}
+                    alt={en ? c.titleEn : c.title}
                     loading="lazy"
                   />
                 </div>
@@ -46,8 +49,8 @@ export default function CasesFilter() {
               </div>
               <div className="gcard__body">
                 <span className="gcard__cat">{c.cat}</span>
-                <h3 className="gcard__title">{c.title}</h3>
-                <p className="gcard__desc">{c.desc}</p>
+                <h3 className="gcard__title">{en ? c.titleEn : c.title}</h3>
+                <p className="gcard__desc">{en ? c.descEn : c.desc}</p>
               </div>
             </Link>
           );

@@ -1,6 +1,9 @@
+"use client";
+
 import Link from "next/link";
 import Reveal from "./Reveal";
 import { asset } from "@/lib/asset";
+import { useLang } from "@/lib/i18n";
 
 // 이미지 플레이스홀더 (이미지 있으면 표시, 없으면 그라데이션 + 라벨)
 export function Ph({
@@ -40,20 +43,22 @@ export function Eyebrow({ children }: { children: React.ReactNode }) {
 // ARX식 메가 CTA 밴드
 export function CtaBand({
   title,
-  cta = "프로젝트 문의하기",
+  cta,
   href = "/contact",
 }: {
   title: React.ReactNode;
-  cta?: string;
+  cta?: React.ReactNode;
   href?: string;
 }) {
+  const { lang } = useLang();
+  const label = cta ?? (lang === "en" ? "Start a project" : "프로젝트 문의하기");
   return (
     <section className="cta-band">
       <div className="wrap">
         <Reveal as="h2">{title}</Reveal>
         <Reveal delay={1}>
           <Link className="btn btn--lg" href={href}>
-            {cta} <span className="arr">→</span>
+            {label} <span className="arr">→</span>
           </Link>
         </Reveal>
       </div>

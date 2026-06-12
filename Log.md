@@ -42,3 +42,15 @@
 - [DECISION] Pages는 `/nexys-website` 서브경로 서빙 → `lib/asset.ts` + `NEXT_PUBLIC_BASE_PATH`로 basePath/assetPrefix 및 raw 자산(이미지/로고/favicon/OG) 경로 보정. `public/.nojekyll` 추가
 - [DONE] 라이브 검증: https://kim-hakseong.github.io/nexys-website/ — 홈/사례/상세/CSS/이미지 전부 200, 육안 렌더 정상
 - 참고: 콘텐츠/디자인 수정 후 `git push`만 하면 자동 재배포됨
+
+## 2026-06-12 — 세션 1 (추가): 기능 요청 반영
+- [DONE] 빠른 스크롤 시 섹션 미표시 버그 수정 (Reveal/CountUp 트리거 강건화 + 안전망)
+- [DONE] Industries 섹터 "민수·에너지" → "원자력·에너지" 변경 (small 라벨 Energy)
+- [DONE] 메인 히어로 "Trust Your Idea & Technology" 폰트 크기 절반 (.hero .display clamp 46→23 / 154→77)
+- [DONE] **KO/EN 언어 전환** (전체 사이트 영문 완역, 기본값 KO):
+  - `lib/i18n.tsx` LangProvider(localStorage 영속) + useLang/useT
+  - 모든 페이지를 server(metadata)+client view로 분리, cases-data/회사 연혁/사업부 데이터에 En 필드 추가
+  - 헤더 KO/EN 토글 + Instagram 픽토그램(https://www.instagram.com/nexyskorea/), 모바일 메뉴에도 배치
+  - 검증: 토글 시 nav/히어로/사례/필터/연혁 등 전 영역 영문 전환 + 페이지 이동 후 언어 유지 확인
+- [DONE] 우측 하단 고정 상담 위젯(`ConsultWidget`) — '...' FAB → 팝업(실시간 문의 / 카카오톡 상담 / 이메일 문의). **UI만**, 실시간·카카오 실제 연동은 TODO(`data-todo`)
+- [TODO] 상담 위젯 실시간 채팅 / 카카오톡 채널 실제 연동 (현재 모양만)

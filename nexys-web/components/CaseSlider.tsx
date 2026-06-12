@@ -4,8 +4,10 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { CASES } from "@/lib/cases-data";
 import { asset } from "@/lib/asset";
+import { useLang } from "@/lib/i18n";
 
 export default function CaseSlider() {
+  const { lang } = useLang();
   const trackRef = useRef<HTMLDivElement>(null);
   const [barStyle, setBarStyle] = useState({ width: "20%", left: "0%" });
   const [atStart, setAtStart] = useState(true);
@@ -91,7 +93,7 @@ export default function CaseSlider() {
                 <img
                   className="ph__img"
                   src={asset(c.image)}
-                  alt={c.title}
+                  alt={lang === "en" ? c.titleEn : c.title}
                   loading="lazy"
                   draggable={false}
                 />
@@ -101,8 +103,12 @@ export default function CaseSlider() {
             </div>
             <div className="case-card__body">
               <span className="case-card__cat">{c.cat}</span>
-              <h3 className="case-card__title">{c.title}</h3>
-              <p className="case-card__desc">{c.desc}</p>
+              <h3 className="case-card__title">
+                {lang === "en" ? c.titleEn : c.title}
+              </h3>
+              <p className="case-card__desc">
+                {lang === "en" ? c.descEn : c.desc}
+              </p>
             </div>
           </Link>
         ))}
