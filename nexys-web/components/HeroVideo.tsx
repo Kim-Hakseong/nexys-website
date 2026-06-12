@@ -25,19 +25,46 @@ export default function HeroVideo() {
     refs.forEach((r, i) => {
       const v = r.current;
       if (!v) return;
+      // React의 muted 속성 직렬화 이슈 우회 — 음소거 자동재생 보장
+      v.muted = true;
+      v.defaultMuted = true;
+      v.setAttribute("muted", "");
       if (i === active) {
         try {
           v.currentTime = 0;
         } catch {
           /* ignore */
         }
-        v.play().catch(() => {});
+        const p = v.play();
+        if (p && typeof p.catch === "function") p.catch(() => {});
       } else {
         v.pause();
       }
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [active, reduce]);
+
+  // 일부 브라우저(Safari 저전력/자동재생 차단)에서 막힌 경우, 첫 사용자 상호작용 시 재생
+  useEffect(() => {
+    if (reduce) return;
+    const kick = () => {
+      const v = refs[active].current ?? refs[0].current;
+      if (v) {
+        v.muted = true;
+        v.play().catch(() => {});
+      }
+    };
+    const opts = { once: true, passive: true } as AddEventListenerOptions;
+    window.addEventListener("pointerdown", kick, opts);
+    window.addEventListener("touchstart", kick, opts);
+    window.addEventListener("scroll", kick, opts);
+    return () => {
+      window.removeEventListener("pointerdown", kick);
+      window.removeEventListener("touchstart", kick);
+      window.removeEventListener("scroll", kick);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [reduce]);
 
   // 모션 최소화 설정 시 정지 포스터 이미지만 노출
   if (reduce) {
