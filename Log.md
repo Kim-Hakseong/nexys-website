@@ -72,3 +72,8 @@
   - 기술 사양 스펙시트(key-value), 시스템 구성/특징 넘버드 리스트(스크롤 reveal)
   - 풀블리드 패럴럭스 피규어 3컷 인터리브
   - Framer Motion useScroll/useTransform 사용, prefers-reduced-motion 대응, KO/EN 유지
+
+## 2026-06-12 — 세션 1 (추가 4): 사례 상세 롤백 + 히어로 영상→애니메이션 WebP
+- [DONE] 구축사례 상세 Perigee 개편 **롤백** — 이전(detail-hero/스펙콜/연관사례) 디자인으로 복구, cx- CSS 제거
+- [DONE] 히어로 배경: `<video>` 자동재생이 일부 브라우저(Safari 등)에서 차단되어 첫 프레임(=옛 사진과 동일 드론)으로 멈추던 문제 → **애니메이션 WebP**로 교체(`<img>`라 자동재생 정책 영향 없음, 무조건 재생). A(8s)→B(10s) 시퀀스 합본, 480×270/8fps, 803KB. hero-*.mp4/HeroVideo 제거
+- [DECISION] GIF은 같은 화질에서 14~17MB로 과대 → 동일 방식이지만 용량 1/18인 애니메이션 WebP 채택(브라우저 지원 동일하게 광범위)

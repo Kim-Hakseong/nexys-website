@@ -1,108 +1,10 @@
 "use client";
 
-import { useRef } from "react";
 import Link from "next/link";
-import {
-  motion,
-  useScroll,
-  useTransform,
-  useReducedMotion,
-} from "framer-motion";
 import Reveal from "@/components/Reveal";
 import { Ph, CtaBand } from "@/components/ui";
-import { CASES, getCase, getRelated, type CaseItem } from "@/lib/cases-data";
-import { asset } from "@/lib/asset";
+import { CASES, getCase, getRelated } from "@/lib/cases-data";
 import { useLang } from "@/lib/i18n";
-
-/* ---- 시네마틱 패럴럭스 히어로 ---- */
-function CxHero({
-  c,
-  title,
-  en,
-}: {
-  c: CaseItem;
-  title: string;
-  en: boolean;
-}) {
-  const ref = useRef<HTMLElement>(null);
-  const reduce = useReducedMotion();
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end start"],
-  });
-  const mediaY = useTransform(scrollYProgress, [0, 1], ["0%", "18%"]);
-  const mediaScale = useTransform(scrollYProgress, [0, 1], [1.02, 1.14]);
-  const innerY = useTransform(scrollYProgress, [0, 1], [0, -60]);
-  const innerO = useTransform(scrollYProgress, [0, 0.85], [1, 0]);
-
-  return (
-    <section className="cx-hero" ref={ref}>
-      <motion.div
-        className="cx-hero__media"
-        style={reduce ? undefined : { y: mediaY, scale: mediaScale }}
-      >
-        <img src={asset(c.image)} alt={title} />
-      </motion.div>
-      <div className="cx-hero__scrim" />
-      <div className="cx-hero__bignum" aria-hidden="true">
-        {c.no}
-      </div>
-      <motion.div
-        className="cx-hero__inner"
-        style={reduce ? undefined : { y: innerY, opacity: innerO }}
-      >
-        <div className="wrap">
-          <div className="cx-crumb">
-            <Link href="/">HOME</Link> <span className="accent">/</span>{" "}
-            <Link href="/cases">{en ? "Work" : "구축 사례"}</Link>{" "}
-            <span className="accent">/</span> <span>{c.no}</span>
-          </div>
-          <span className="cx-hero__cat">
-            {c.cat} · {c.badge}
-          </span>
-          <h1 className="cx-hero__title">{title}</h1>
-        </div>
-      </motion.div>
-      <div className="cx-scrollcue">
-        <span className="bar" /> SCROLL
-      </div>
-    </section>
-  );
-}
-
-/* ---- 풀블리드 패럴럭스 피규어 ---- */
-function CxFigure({ src, cap }: { src: string; cap?: string }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const reduce = useReducedMotion();
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"],
-  });
-  const y = useTransform(scrollYProgress, [0, 1], ["-11%", "11%"]);
-  return (
-    <div className="cx-figure" ref={ref}>
-      <motion.div className="cx-figure__media" style={reduce ? undefined : { y }}>
-        <img src={asset(src)} alt={cap ?? ""} loading="lazy" />
-      </motion.div>
-      {cap ? <span className="cx-figure__cap">{cap}</span> : null}
-    </div>
-  );
-}
-
-function NumberedList({ items }: { items: string[] }) {
-  return (
-    <div className="cx-list">
-      {items.map((it, i) => (
-        <Reveal className="cx-list__item" delay={Math.min(i, 4)} key={i}>
-          <span className="cx-list__n">
-            {String(i + 1).padStart(2, "0")}
-          </span>
-          <span className="cx-list__t">{it}</span>
-        </Reveal>
-      ))}
-    </div>
-  );
-}
 
 export default function CaseDetailView({ slug }: { slug: string }) {
   const c = getCase(slug);
@@ -111,120 +13,106 @@ export default function CaseDetailView({ slug }: { slug: string }) {
   const t = (ko: React.ReactNode, e: React.ReactNode) => (en ? e : ko);
   if (!c) return null;
 
-  const title = en ? c.titleEn : c.title;
   const related = getRelated(c.slug, 3);
   const idx = CASES.findIndex((x) => x.slug === c.slug);
   const prev = idx > 0 ? CASES[idx - 1] : CASES[CASES.length - 1];
   const next = idx < CASES.length - 1 ? CASES[idx + 1] : CASES[0];
 
-  const specs: [string, string][] = [
-    [en ? "Sector" : "분야", en ? c.sectorEn : c.sector],
-    [en ? "Division" : "사업부", en ? c.divisionEn : c.division],
-    [en ? "Platform" : "플랫폼", c.platform],
-    [en ? "Category" : "카테고리", `${c.cat} · ${c.badge}`],
-    [en ? "Case No." : "사례 번호", `${c.no} / 13`],
-  ];
+  const title = en ? c.titleEn : c.title;
 
   return (
     <>
-      <div className="cx">
-        <CxHero c={c} title={title} en={en} />
-
-        {/* OVERVIEW LEAD */}
-        <section className="cx-sec">
-          <div className="wrap">
-            <div className="cx-lead-grid">
-              <Reveal as="div" className="cx-label">
-                <b>01</b> {en ? "Overview" : "시스템 개요"}
-              </Reveal>
-              <Reveal>
-                <p className="cx-lead">{en ? c.overviewLeadEn : c.overviewLead}</p>
-              </Reveal>
-            </div>
+      {/* DETAIL HERO */}
+      <section className="detail-hero">
+        <div className="wrap">
+          <div className="page-hero__crumb">
+            <Link href="/">HOME</Link> <span className="accent">/</span>{" "}
+            <Link href="/cases">{t("구축 사례", "Work")}</Link>{" "}
+            <span className="accent">/</span> <span>{c.no}</span>
           </div>
-        </section>
-
-        {/* FIGURE 1 */}
-        <CxFigure src={c.image} cap={`${title} — ${c.badge}`} />
-
-        {/* SPEC SHEET */}
-        <section className="cx-sec cx-sec--line">
-          <div className="wrap">
-            <div className="cx-head">
-              <Reveal as="h2">
-                {t(
-                  <>
-                    기술 <em className="accent">사양</em>
-                  </>,
-                  <>
-                    Technical <em className="accent">specs</em>
-                  </>
-                )}
-              </Reveal>
+          <Reveal as="span" className="detail-hero__cat">
+            {c.cat} · {c.badge}
+          </Reveal>
+          <Reveal as="h1" delay={1}>
+            {title}
+          </Reveal>
+          <Reveal className="detail-meta" delay={2}>
+            <div>
+              <span className="k">Sector</span>
+              <span className="v">{en ? c.sectorEn : c.sector}</span>
             </div>
-            <div className="cx-specsheet">
-              {specs.map(([k, v], i) => (
-                <Reveal className="cx-spec-row" delay={Math.min(i, 4)} key={k}>
-                  <span className="k">{k}</span>
-                  <span className="v">{v}</span>
-                </Reveal>
-              ))}
+            <div>
+              <span className="k">Division</span>
+              <span className="v">{en ? c.divisionEn : c.division}</span>
             </div>
+            <div>
+              <span className="k">Platform</span>
+              <span className="v">{c.platform}</span>
+            </div>
+            <div>
+              <span className="k">Case No.</span>
+              <span className="v">{t(`구축 사례 ${c.no}`, `Case ${c.no}`)}</span>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* LEAD FIGURE */}
+      <section
+        className="section section--ink"
+        style={{ paddingTop: "clamp(40px,5vw,64px)" }}
+      >
+        <div className="wrap">
+          <Reveal className="detail-figure">
+            <Ph src={c.image} alt={title} />
+          </Reveal>
+        </div>
+      </section>
+
+      {/* OVERVIEW */}
+      <section className="section section--white">
+        <div className="wrap">
+          <div className="spec-cols">
+            <Reveal as="h2">{t("시스템 개요", "System Overview")}</Reveal>
+            <Reveal delay={1}>
+              <p className="lead" style={{ marginBottom: 28 }}>
+                {en ? c.overviewLeadEn : c.overviewLead}
+              </p>
+              <ul className="spec-list">
+                {(en ? c.overviewEn : c.overview).map((o, i) => (
+                  <li key={i}>{o}</li>
+                ))}
+              </ul>
+            </Reveal>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* OVERVIEW POINTS */}
-        <section className="cx-sec cx-sec--line">
-          <div className="wrap">
-            <div className="cx-head">
-              <Reveal as="div" className="cx-label" style={{ marginBottom: 18 }}>
-                <b>02</b> {en ? "What it does" : "구성"}
-              </Reveal>
-              <Reveal as="h2">
-                {t(
-                  <>
-                    시스템 <em className="accent">구성</em>
-                  </>,
-                  <>
-                    System <em className="accent">overview</em>
-                  </>
-                )}
-              </Reveal>
-            </div>
-            <NumberedList items={en ? c.overviewEn : c.overview} />
+      {/* FEATURES */}
+      <section className="section section--dark">
+        <div className="wrap">
+          <div className="spec-cols">
+            <Reveal as="h2">{t("시스템 특징", "Key Features")}</Reveal>
+            <Reveal delay={1}>
+              <ul className="spec-list">
+                {(en ? c.featuresEn : c.features).map((f, i) => (
+                  <li key={i}>{f}</li>
+                ))}
+              </ul>
+            </Reveal>
           </div>
-        </section>
-
-        {/* FIGURE 2 */}
-        <CxFigure src={c.figures[0]} cap={`${title} — 01`} />
-
-        {/* FEATURES */}
-        <section className="cx-sec cx-sec--line">
-          <div className="wrap">
-            <div className="cx-head">
-              <Reveal as="div" className="cx-label" style={{ marginBottom: 18 }}>
-                <b>03</b> {en ? "Capabilities" : "특징"}
-              </Reveal>
-              <Reveal as="h2">
-                {t(
-                  <>
-                    시스템 <em className="accent">특징</em>
-                  </>,
-                  <>
-                    Key <em className="accent">features</em>
-                  </>
-                )}
-              </Reveal>
-            </div>
-            <NumberedList items={en ? c.featuresEn : c.features} />
+          <div className="fig-2">
+            <Reveal className="detail-figure">
+              <Ph src={c.figures[0]} alt={`${title} 1`} />
+            </Reveal>
+            <Reveal className="detail-figure" delay={1}>
+              <Ph src={c.figures[1] ?? c.figures[0]} alt={`${title} 2`} />
+            </Reveal>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* FIGURE 3 */}
-        <CxFigure src={c.figures[1] ?? c.figures[0]} cap={`${title} — 02`} />
-      </div>
-
-      {/* RELATED (light) */}
+      {/* RELATED */}
       <section className="section section--paper">
         <div className="wrap">
           <div className="sec-head--split sec-head">
@@ -268,13 +156,13 @@ export default function CaseDetailView({ slug }: { slug: string }) {
             }}
           >
             <Link className="link-arrow" href={`/cases/${prev.slug}`}>
-              <span className="arr">←</span> {t(`이전 (${prev.no})`, `Prev (${prev.no})`)}
+              <span className="arr">←</span> {t(`이전 사례 (${prev.no})`, `Prev (${prev.no})`)}
             </Link>
             <Link className="btn btn--ghost" href="/cases">
               {t("전체 사례 보기", "All work")} <span className="arr">→</span>
             </Link>
             <Link className="link-arrow" href={`/cases/${next.slug}`}>
-              {t(`다음 (${next.no})`, `Next (${next.no})`)} <span className="arr">→</span>
+              {t(`다음 사례 (${next.no})`, `Next (${next.no})`)} <span className="arr">→</span>
             </Link>
           </div>
         </div>

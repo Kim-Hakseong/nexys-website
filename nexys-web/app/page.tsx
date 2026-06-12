@@ -7,7 +7,6 @@ import Industries from "@/components/Industries";
 import CaseSlider from "@/components/CaseSlider";
 import CountUp from "@/components/CountUp";
 import { CtaBand } from "@/components/ui";
-import HeroVideo from "@/components/HeroVideo";
 import { PARTNERS } from "@/lib/site";
 import { asset } from "@/lib/asset";
 import { useLang } from "@/lib/i18n";
@@ -60,7 +59,13 @@ export default function Home() {
       {/* HERO */}
       <section className="hero">
         <div className="hero__bg">
-          <HeroVideo />
+          {/* 애니메이션 WebP — GIF처럼 자동재생 보장(자동재생 정책 영향 없음). A→B 시퀀스 */}
+          <img
+            className="hero__img is-active"
+            src={asset("/videos/hero.webp")}
+            alt=""
+            aria-hidden="true"
+          />
           <div className="hero__grain"></div>
           <div className="hero__scan"></div>
         </div>
