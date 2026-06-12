@@ -436,7 +436,7 @@ body.menu-open .mobile-menu__foot { opacity: 1; }
   background: radial-gradient(closest-side, rgba(230,0,18,.18), transparent 70%); pointer-events: none; }
 .page-hero__crumb { font-family: var(--mono); font-size: 12.5px; letter-spacing: .05em; color: var(--t-on-dark-faint); margin-bottom: 26px; display: flex; gap: 8px; }
 .page-hero__crumb .accent { color: var(--red); }
-.page-hero h1 { font-size: clamp(40px,6.4vw,104px); line-height: .98; }
+.page-hero h1 { font-size: clamp(30px,3.8vw,58px); line-height: 1.04; letter-spacing: -.02em; }
 .page-hero .lead { margin-top: 26px; max-width: 720px; color: var(--t-on-dark-dim); }
 
 /* ---- Utility ---- */
