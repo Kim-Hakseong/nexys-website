@@ -35,3 +35,10 @@
 
 ### 배포 방법 (1줄)
 정적 export이므로 호스팅 루트 디렉토리를 `nexys-web`, 빌드 `npm run build`, 출력 `out`으로 지정(또는 `nexys-web/out`을 정적 호스팅에 업로드). Vercel/Cloudflare Pages/일반 웹호스팅 모두 호환.
+
+## 2026-06-12 — 세션 1 (추가): GitHub Pages 자동 배포
+- [DONE] 퍼블릭 저장소 생성·푸시: https://github.com/Kim-Hakseong/nexys-website
+- [DONE] GitHub Actions 자동 배포 워크플로우(`.github/workflows/deploy.yml`): main 푸시 시 빌드→Pages 배포
+- [DECISION] Pages는 `/nexys-website` 서브경로 서빙 → `lib/asset.ts` + `NEXT_PUBLIC_BASE_PATH`로 basePath/assetPrefix 및 raw 자산(이미지/로고/favicon/OG) 경로 보정. `public/.nojekyll` 추가
+- [DONE] 라이브 검증: https://kim-hakseong.github.io/nexys-website/ — 홈/사례/상세/CSS/이미지 전부 200, 육안 렌더 정상
+- 참고: 콘텐츠/디자인 수정 후 `git push`만 하면 자동 재배포됨
