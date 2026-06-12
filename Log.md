@@ -77,3 +77,10 @@
 - [DONE] 구축사례 상세 Perigee 개편 **롤백** — 이전(detail-hero/스펙콜/연관사례) 디자인으로 복구, cx- CSS 제거
 - [DONE] 히어로 배경: `<video>` 자동재생이 일부 브라우저(Safari 등)에서 차단되어 첫 프레임(=옛 사진과 동일 드론)으로 멈추던 문제 → **애니메이션 WebP**로 교체(`<img>`라 자동재생 정책 영향 없음, 무조건 재생). A(8s)→B(10s) 시퀀스 합본, 480×270/8fps, 803KB. hero-*.mp4/HeroVideo 제거
 - [DECISION] GIF은 같은 화질에서 14~17MB로 과대 → 동일 방식이지만 용량 1/18인 애니메이션 WebP 채택(브라우저 지원 동일하게 광범위)
+
+## 2026-06-12 — 세션 1 (추가 5): 히어로 여백/노출 버그 + 레드 축소 + 헤더 영문·가운데
+- [DONE] 히어로 우측 여백: heroDrift(좌우 팬) → heroZoom(가운데 원점 줌)으로 교체, inset:0/100%/object-position center → 항상 꽉 채움
+- [DONE] **히어로/챌린지 텍스트 미노출 버그 해결**: Reveal을 Framer whileInView → 강건한 IntersectionObserver 방식으로 재작성. SSR/JS미실행 시 항상 보임, 상단(뷰포트 근처) 콘텐츠는 즉시 표시(깜빡임 없음), 1.6s 안전망. (사용자 Chrome에서 히어로 텍스트가 opacity:0로 멈춰있던 문제)
+- [DONE] 레드(#E60012) 축소: 텍스트 강조 `.accent`/`em.accent` → inherit(다크=화이트), Industries 타이틀 `.ind-title` → 화이트(점 포함). 버튼/뱃지 등 기능 레드는 유지
+- [DONE] 상단 메뉴 영문 통일(Company/Business/Work/Contact/Inquiry) + **가운데 정렬**(로고 좌 / 메뉴 중앙 / Inquiry·KO/EN·IG 우)
+- [DONE] 타이포 정제: eyebrow 자간 .14→.22em

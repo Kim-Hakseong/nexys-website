@@ -44,8 +44,6 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
-  const { lang } = useLang();
-  const t = (ko: string, en: string) => (lang === "en" ? en : ko);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -78,10 +76,12 @@ export default function Header() {
     <>
       <header className={`site-header${scrolled ? " scrolled" : ""}`}>
         <div className="wrap">
-          <Link className="logo" href="/" aria-label="NEXYS 홈">
+          <Link className="logo" href="/" aria-label="NEXYS Home">
             <img src={asset("/logo.png")} alt={SITE.fullName} />
           </Link>
-          <nav className="nav" aria-label={t("주요 메뉴", "Main menu")}>
+
+          {/* 상단 메뉴 — 영문 통일 + 가운데 정렬 */}
+          <nav className="nav nav--center" aria-label="Main menu">
             <div className="nav__links">
               {NAV.map((n) => (
                 <Link
@@ -89,12 +89,15 @@ export default function Header() {
                   href={n.href}
                   aria-current={isActive(n.href) ? "page" : undefined}
                 >
-                  {t(n.label, n.labelEn)}
+                  {n.labelEn}
                 </Link>
               ))}
             </div>
+          </nav>
+
+          <div className="nav__right">
             <Link className="btn" href="/contact">
-              {t("프로젝트 문의", "Inquiry")} <span className="arr">→</span>
+              Inquiry <span className="arr">→</span>
             </Link>
             <div className="nav__util">
               <LangSwitch />
@@ -108,10 +111,11 @@ export default function Header() {
                 <InstagramIcon />
               </a>
             </div>
-          </nav>
+          </div>
+
           <button
             className="burger"
-            aria-label={menuOpen ? t("메뉴 닫기", "Close menu") : t("메뉴 열기", "Open menu")}
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
             aria-expanded={menuOpen}
             aria-controls="m-menu"
             onClick={() => setMenuOpen((v) => !v)}
@@ -124,11 +128,11 @@ export default function Header() {
       </header>
 
       <div className="mobile-menu" id="m-menu" aria-hidden={!menuOpen}>
-        <nav className="mobile-menu__links" aria-label={t("모바일 메뉴", "Mobile menu")}>
+        <nav className="mobile-menu__links" aria-label="Mobile menu">
           {NAV.map((n, i) => (
             <Link key={n.href} href={n.href} onClick={() => setMenuOpen(false)}>
               <span className="idx">{String(i + 1).padStart(2, "0")}</span>{" "}
-              {t(n.label, n.labelEn)}
+              {n.labelEn}
             </Link>
           ))}
         </nav>
@@ -148,7 +152,7 @@ export default function Header() {
         <div className="mobile-menu__foot">
           <span>TEL {SITE.tel}</span>
           <span>{SITE.email}</span>
-          <span>{t("대전 유성구 테크노2로 199", "Daejeon, Korea")}</span>
+          <span>Daejeon, Korea</span>
         </div>
       </div>
     </>
