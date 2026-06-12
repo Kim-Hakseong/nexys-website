@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { asset } from "@/lib/asset";
 
 interface Panel {
   title: string; // ind-title 표시값
@@ -158,7 +159,7 @@ export default function Industries() {
                     <div className="ph">
                       <img
                         className="ph__img"
-                        src={p.img}
+                        src={asset(p.img)}
                         alt={p.label}
                         loading="lazy"
                       />

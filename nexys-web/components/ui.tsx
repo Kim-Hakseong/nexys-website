@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Reveal from "./Reveal";
+import { asset } from "@/lib/asset";
 
 // 이미지 플레이스홀더 (이미지 있으면 표시, 없으면 그라데이션 + 라벨)
 export function Ph({
@@ -21,7 +22,12 @@ export function Ph({
       data-label={src ? undefined : label}
     >
       {src ? (
-        <img className="ph__img" src={src} alt={alt ?? ""} loading="lazy" />
+        <img
+          className="ph__img"
+          src={asset(src)}
+          alt={alt ?? ""}
+          loading="lazy"
+        />
       ) : null}
     </div>
   );

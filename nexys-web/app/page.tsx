@@ -6,6 +6,7 @@ import CaseSlider from "@/components/CaseSlider";
 import CountUp from "@/components/CountUp";
 import { CtaBand } from "@/components/ui";
 import { PARTNERS } from "@/lib/site";
+import { asset } from "@/lib/asset";
 
 const CHALLENGES = [
   {
@@ -43,7 +44,7 @@ export default function Home() {
       {/* HERO */}
       <section className="hero">
         <div className="hero__bg">
-          <img className="hero__img" src="/images/hero-uav.jpg" alt="" />
+          <img className="hero__img" src={asset("/images/hero-uav.jpg")} alt="" />
           <div className="hero__grain"></div>
           <div className="hero__scan"></div>
         </div>
@@ -135,7 +136,7 @@ export default function Home() {
               <div className="ph">
                 <img
                   className="ph__img"
-                  src="/images/engine.jpg"
+                  src={asset("/images/engine.jpg")}
                   alt="FIELD"
                   loading="lazy"
                 />

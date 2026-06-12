@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { SITE } from "@/lib/site";
+import { asset } from "@/lib/asset";
 
 export default function Footer() {
   const year = 2026; // 정적 export — 빌드 시점 연도 고정
@@ -9,7 +10,7 @@ export default function Footer() {
         <div className="footer__top">
           <div className="footer__brand">
             <Link className="logo" href="/" style={{ color: "#fff" }}>
-              <img src="/logo.png" alt={SITE.fullName} />
+              <img src={asset("/logo.png")} alt={SITE.fullName} />
             </Link>
             <p className="slogan">Trust Your Idea &amp; Technology</p>
             <p className="addr">

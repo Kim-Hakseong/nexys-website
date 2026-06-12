@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { CASES, FILTERS, type CaseCategory } from "@/lib/cases-data";
+import { asset } from "@/lib/asset";
 
 export default function CasesFilter() {
   const [active, setActive] = useState<"all" | CaseCategory>("all");
@@ -35,7 +36,7 @@ export default function CasesFilter() {
                 <div className="ph">
                   <img
                     className="ph__img"
-                    src={c.image}
+                    src={asset(c.image)}
                     alt={c.title}
                     loading="lazy"
                   />

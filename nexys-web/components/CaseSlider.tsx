@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { CASES } from "@/lib/cases-data";
+import { asset } from "@/lib/asset";
 
 export default function CaseSlider() {
   const trackRef = useRef<HTMLDivElement>(null);
@@ -89,7 +90,7 @@ export default function CaseSlider() {
               <div className="ph">
                 <img
                   className="ph__img"
-                  src={c.image}
+                  src={asset(c.image)}
                   alt={c.title}
                   loading="lazy"
                   draggable={false}

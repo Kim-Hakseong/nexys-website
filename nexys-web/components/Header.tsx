@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { NAV, SITE } from "@/lib/site";
+import { asset } from "@/lib/asset";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -43,7 +44,7 @@ export default function Header() {
       <header className={`site-header${scrolled ? " scrolled" : ""}`}>
         <div className="wrap">
           <Link className="logo" href="/" aria-label="NEXYS 홈">
-            <img src="/logo.png" alt={SITE.fullName} />
+            <img src={asset("/logo.png")} alt={SITE.fullName} />
           </Link>
           <nav className="nav" aria-label="주요 메뉴">
             <div className="nav__links">

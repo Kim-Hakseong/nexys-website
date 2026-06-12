@@ -3,9 +3,10 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { SITE } from "@/lib/site";
+import { asset } from "@/lib/asset";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(SITE.url),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_ORIGIN || SITE.url),
   title: {
     default: "NEXYS — Trust Your Idea & Technology",
     template: "%s — NEXYS",
@@ -27,8 +28,8 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "NEXYS Co., Ltd." }],
   icons: {
-    icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
-    apple: "/favicon.svg",
+    icon: [{ url: asset("/favicon.svg"), type: "image/svg+xml" }],
+    apple: asset("/favicon.svg"),
   },
   openGraph: {
     type: "website",
@@ -37,13 +38,13 @@ export const metadata: Metadata = {
     title: "NEXYS — Trust Your Idea & Technology",
     description: SITE.desc,
     url: SITE.url,
-    images: [{ url: "/og.svg", width: 1200, height: 630, alt: "NEXYS" }],
+    images: [{ url: asset("/og.svg"), width: 1200, height: 630, alt: "NEXYS" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "NEXYS — Trust Your Idea & Technology",
     description: SITE.desc,
-    images: ["/og.svg"],
+    images: [asset("/og.svg")],
   },
 };
 
