@@ -91,3 +91,26 @@
 - [DONE] Industries를 제시 코드 스타일로 전면 변경: 분야 탭(국방·항공우주/에너지·산업) + 좌측 세로 인터랙티브 리스트(hover시 desc 확장·레드 마커) + 우측 sticky 비주얼 패널(이미지·태그·스펙칩·사례 링크). 실제 13개 사례 데이터/링크 사용
 - [DONE] 이미지 스크롤 모핑(parallax): `ParallaxImage`(Framer useScroll) — 챌린지 미디어, 회사소개 인사말 이미지에 적용
 - [DONE] 회사소개 History 타임라인 스크롤 인터랙티브: 스크롤 진행에 따라 좌측 레드 라인이 채워짐(`Timeline` + useScroll scaleY) + 연도 노드
+
+## 2026-06-12 — 세션 1 (추가 7): 내부 페이지 제목 크기
+- [DONE] Company/Business/Work/Contact의 `.page-hero h1` 크기 축소(clamp 104→58px) — 너무 커서 균형 조정
+
+## 2026-06-12 — 세션 1 (추가 8): Work 제목 정리 + Company/Work 다크 통일
+- [DONE] Work(사례) 페이지 제목에서 개수 "13개의" 제거(향후 추가 대비, 카운트 미표기 방침) — KO "검증된 시스템" / EN "Field-proven systems we built"
+- [DONE] Company(인사말·연혁), Work(사례 그리드)의 흰색/페이퍼 섹션을 black으로 통일. 라이트용 컴포넌트(greeting/filter/gcard) 다크 배경 글자색 보정(흰색 계열). 카테고리 라벨·뱃지의 포인트색만 유지
+
+## 2026-06-12 — 세션 1 (추가 9): 포인트 컬러 변경
+- [DECISION] #E60012가 너무 강렬 → #350a03(테스트) 거쳐 **#7a1020(와인/버건디)** 로 확정
+- [DONE] `--red`/`--red-bright`/`--red-deep` + 하드코딩 rgba(230,0,18) + favicon/og/tailwind 토큰 전부 일괄 치환
+- 참고: #350a03은 검정 배경에서 포인트가 거의 안 보여 반려, #7a1020로 가시성·절제 균형
+
+## 2026-06-12 — 세션 1 (추가 10): 모바일 햄버거 메뉴
+- [DONE] **버그 수정**: 원본 CSS 규칙 순서 문제로 `.burger`가 모바일에서도 display:none → 메뉴 접근 불가였음. `.site-header .burger` 특이도 상향으로 우측 상단 표시
+- [DONE] 모바일 메뉴를 풀스크린 오버레이 → **헤더 아래로 펼쳐지는 드롭다운(트리식)** 으로 변경(스택형 항목+번호, KO/EN·Instagram·연락처 포함). 헤더 z-index 상향으로 로고/X 유지
+
+## 2026-06-12 — 세션 1 (추가 11): 용어 변경
+- [DONE] 사이트 전체 "방산" → "국방" 치환 (홈/회사소개/연혁/국방·항공기술 연구소/메타/공통문구). [NOTE] perl 치환 시 `-C` 플래그가 바이트/문자 불일치를 유발 → 플래그 없이 바이트 치환으로 해결
+
+### 현재 라이브
+- https://kim-hakseong.github.io/nexys-website/ — main 푸시 시 GitHub Actions 자동 배포
+- 미해결 TODO: 상담 위젯 실시간/카카오 실제 연동, 실제 사진·파트너 로고 교체, 카카오맵 정식 임베드, OG PNG
