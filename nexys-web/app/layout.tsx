@@ -30,8 +30,9 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "NEXYS Co., Ltd." }],
   icons: {
-    icon: [{ url: asset("/favicon.svg"), type: "image/svg+xml" }],
-    apple: asset("/favicon.svg"),
+    icon: [{ url: asset("/favicon-nxs.png"), type: "image/png" }],
+    apple: asset("/favicon-nxs.png"),
+    shortcut: asset("/favicon-nxs.png"),
   },
   openGraph: {
     type: "website",
