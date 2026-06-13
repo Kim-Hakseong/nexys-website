@@ -8,7 +8,13 @@ export interface AccItem {
   body: string;
 }
 
-export default function Accordion({ items }: { items: AccItem[] }) {
+export default function Accordion({
+  items,
+  onActiveChange,
+}: {
+  items: AccItem[];
+  onActiveChange?: (i: number) => void;
+}) {
   const [open, setOpen] = useState(0);
   const panelRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [heights, setHeights] = useState<number[]>([]);
@@ -33,7 +39,12 @@ export default function Accordion({ items }: { items: AccItem[] }) {
             <button
               className="acc-head"
               aria-expanded={isOpen}
-              onClick={() => setOpen(isOpen ? -1 : i)}
+              onClick={() => {
+                const willOpen = !isOpen;
+                setOpen(willOpen ? i : -1);
+                if (willOpen) onActiveChange?.(i);
+              }}
+              onMouseEnter={() => onActiveChange?.(i)}
             >
               <span className="acc-no">{it.no}</span>
               <span className="acc-label">{it.label}</span>

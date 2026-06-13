@@ -820,3 +820,7 @@ body.menu-open .consult { display: none; }
   color: var(--t-on-dark); line-height: 1;
 }
 .mobile-menu__util { flex-wrap: wrap; row-gap: 16px; }
+
+/* 챌린지 미디어 이미지 전환 페이드 (항목 선택 시) */
+.ph--px .ph__img { animation: pxFade .5s var(--ease); }
+@keyframes pxFade { from { opacity: .15; } to { opacity: 1; } }
