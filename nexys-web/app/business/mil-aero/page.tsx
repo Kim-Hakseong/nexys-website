@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
 import BusinessPage, { type BusinessData } from "@/components/BusinessPage";
+import JsonLd from "@/components/JsonLd";
+import { breadcrumbLd } from "@/lib/seo";
+import { asset } from "@/lib/asset";
 
 export const metadata: Metadata = {
   title: "국방·항공기술 연구소",
   description:
     "(주)넥시스 국방·항공기술 연구소 — 유/무인기 FLCC HILS, HILS/SIL 플랫폼, 무기체계 점검장비, 센서·PCB 설계.",
+  alternates: { canonical: asset("/business/mil-aero/") },
 };
 
 const data: BusinessData = {
@@ -93,5 +97,16 @@ const data: BusinessData = {
 };
 
 export default function Page() {
-  return <BusinessPage {...data} />;
+  return (
+    <>
+      <JsonLd
+        data={breadcrumbLd([
+          { name: "홈", path: "/" },
+          { name: "사업영역", path: "/business/" },
+          { name: data.name, path: "/business/mil-aero/" },
+        ])}
+      />
+      <BusinessPage {...data} />
+    </>
+  );
 }

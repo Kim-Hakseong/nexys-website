@@ -1,11 +1,15 @@
 import type { Metadata } from "next";
 import BusinessPage, { type BusinessData } from "@/components/BusinessPage";
+import JsonLd from "@/components/JsonLd";
+import { breadcrumbLd } from "@/lib/seo";
+import { asset } from "@/lib/asset";
 import { ENGINEERING_WORKS, ENGINEERING_WORKS_EN } from "@/lib/cases-data";
 
 export const metadata: Metadata = {
   title: "엔지니어링 사업부",
   description:
     "(주)넥시스 엔지니어링 사업부 — 공장·설비 자동화, PLC/HMI, 전기·계장 공사, 판넬 제작 및 시운전.",
+  alternates: { canonical: asset("/business/engineering/") },
 };
 
 const data: BusinessData = {
@@ -109,5 +113,16 @@ const data: BusinessData = {
 };
 
 export default function Page() {
-  return <BusinessPage {...data} />;
+  return (
+    <>
+      <JsonLd
+        data={breadcrumbLd([
+          { name: "홈", path: "/" },
+          { name: "사업영역", path: "/business/" },
+          { name: data.name, path: "/business/engineering/" },
+        ])}
+      />
+      <BusinessPage {...data} />
+    </>
+  );
 }

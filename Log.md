@@ -120,3 +120,11 @@
   - 01 비용·위험 → F-16 편대(Zg91t26xbrg) / 02 통합검증 복잡성 → 스위치·케이블(T-IN5o3kxyA) / 03 반복성·데이터 → 광섬유 데이터(JyRTi3LoQnc) / 04 국산화 → PCB(AEboEnOlpLc)
 - [NOTE] Unsplash License(상업적 사용 자유, attribution 불필요). 일부 사진은 Unsplash+ 유료라 다운로드 차단됨 → 무료 가능한 것으로 선별
 - [DONE] 03/04 이미지 재교체(주제 적합도 개선): 03 반복성·데이터 → 오실로스코프·계측기 측정(Pexels 132700), 04 국산화 → 엔지니어 회로기판 작업(Pexels 9242279). (기존 03 광섬유/04 PCB는 주제와 거리감)
+
+## 2026-06-13 — SEO / AEO / GEO 최적화 (화면 변화 0, 비가시 영역만)
+- [확인] 빌드 방식은 이미 SSG(output:'export') — 전 페이지 정적 사전렌더
+- [DONE] JSON-LD 구조화 데이터(Schema.org): 레이아웃에 Organization+WebSite(@graph), 페이지별 BreadcrumbList, 사례 상세 Service, 사례목록 ItemList — `lib/seo.ts` + `components/JsonLd.tsx`
+- [DONE] 페이지별 canonical(alternates) 추가, OG 이미지 SVG→PNG(1200×630, og.png)로 교체
+- [DONE] GEO: `/llms.txt` `/llms-full.txt`(route handler, env-aware URL), robots에 AI 크롤러 명시 허용(GPTBot/ClaudeBot/PerplexityBot/Google-Extended 등), sitemap lastmod + 실서빙 origin 사용
+- [DECISION] FAQ 스키마는 보이는 FAQ 콘텐츠가 없어 정책상 생략(화면 불변 유지). 영문 /en 분리는 추후 옵션
+- [TODO/운영] 도메인 i-nexys.com 이전 시 NEXT_PUBLIC_SITE_ORIGIN 변경, Google Search Console·Bing 등록 + 사이트맵 제출

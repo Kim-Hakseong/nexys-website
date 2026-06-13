@@ -6,6 +6,8 @@ import ConsultWidget from "@/components/ConsultWidget";
 import { LangProvider } from "@/lib/i18n";
 import { SITE } from "@/lib/site";
 import { asset } from "@/lib/asset";
+import JsonLd from "@/components/JsonLd";
+import { siteGraph } from "@/lib/seo";
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_ORIGIN || SITE.url),
@@ -15,6 +17,7 @@ export const metadata: Metadata = {
   },
   description: SITE.desc,
   applicationName: "NEXYS",
+  alternates: { canonical: asset("/") },
   keywords: [
     "넥시스",
     "NEXYS",
@@ -40,16 +43,23 @@ export const metadata: Metadata = {
     siteName: "NEXYS",
     title: "NEXYS — Trust Your Idea & Technology",
     description: SITE.desc,
-    url: SITE.url,
-    images: [{ url: asset("/og.svg"), width: 1200, height: 630, alt: "NEXYS" }],
+    url: siteUrlForOg(),
+    images: [
+      { url: asset("/og.png"), width: 1200, height: 630, alt: "NEXYS — Trust Your Idea & Technology" },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "NEXYS — Trust Your Idea & Technology",
     description: SITE.desc,
-    images: [asset("/og.svg")],
+    images: [asset("/og.png")],
   },
 };
+
+function siteUrlForOg() {
+  return (process.env.NEXT_PUBLIC_SITE_ORIGIN || SITE.url) +
+    (process.env.NEXT_PUBLIC_BASE_PATH || "") + "/";
+}
 
 export default function RootLayout({
   children,
@@ -59,6 +69,7 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body>
+        <JsonLd data={siteGraph()} />
         <LangProvider>
           <Header />
           <main>{children}</main>

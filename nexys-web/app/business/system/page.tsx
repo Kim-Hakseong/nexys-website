@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
 import BusinessPage, { type BusinessData } from "@/components/BusinessPage";
+import JsonLd from "@/components/JsonLd";
+import { breadcrumbLd } from "@/lib/seo";
+import { asset } from "@/lib/asset";
 
 export const metadata: Metadata = {
   title: "시스템 사업부",
   description:
     "(주)넥시스 시스템 사업부 — Test Automation 설계, 분산제어(DCS), 데이터 취득(DAQ), 시험지원·유지보수.",
+  alternates: { canonical: asset("/business/system/") },
 };
 
 const data: BusinessData = {
@@ -102,5 +106,16 @@ const data: BusinessData = {
 };
 
 export default function Page() {
-  return <BusinessPage {...data} />;
+  return (
+    <>
+      <JsonLd
+        data={breadcrumbLd([
+          { name: "홈", path: "/" },
+          { name: "사업영역", path: "/business/" },
+          { name: data.name, path: "/business/system/" },
+        ])}
+      />
+      <BusinessPage {...data} />
+    </>
+  );
 }
