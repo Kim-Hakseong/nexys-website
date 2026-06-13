@@ -19,25 +19,28 @@ type Div = {
 };
 
 const ICON = {
+  // 시스템 — 모니터 + 파형 (HMI·계측 데이터)
   system: (
     <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="dept-card__icon" aria-hidden="true">
-      <rect x="14" y="14" width="20" height="20" rx="2" />
-      <rect x="20.5" y="20.5" width="7" height="7" rx="1" />
-      <path d="M19 14V9M29 14V9M19 39v-5M29 39v-5M14 19H9M14 29H9M39 19h-5M39 29h-5" />
+      <rect x="5" y="9" width="38" height="24" rx="2" />
+      <path d="M17 39h14M24 33v6" />
+      <path d="M11 24l3-5 4 9 4-13 4 11 3-4 4 2" />
     </svg>
   ),
+  // 엔지니어링 — 제어 판넬 / 캐비닛 (PLC·전계장·Panel)
   engineering: (
     <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="dept-card__icon" aria-hidden="true">
-      <circle cx="24" cy="24" r="7" />
-      <path d="M24 8v5M24 35v5M8 24h5M35 24h5M12.7 12.7l3.5 3.5M31.8 31.8l3.5 3.5M35.3 12.7l-3.5 3.5M16.2 31.8l-3.5 3.5" />
+      <rect x="12" y="6" width="24" height="36" rx="2" />
+      <path d="M31 22v6" />
+      <path d="M16 22h9M16 27h9M16 32h6" />
+      <circle cx="18" cy="13" r="1.5" fill="currentColor" stroke="none" />
+      <circle cx="24" cy="13" r="1.5" fill="currentColor" stroke="none" />
     </svg>
   ),
+  // 국방·항공 — 무인기 / 제트기 실루엣 (항공)
   research: (
     <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="dept-card__icon" aria-hidden="true">
-      <circle cx="24" cy="35" r="2.4" fill="currentColor" stroke="none" />
-      <path d="M16.5 31a11 11 0 0 1 15 0" />
-      <path d="M11.5 26a18 18 0 0 1 25 0" />
-      <path d="M6.5 21a25 25 0 0 1 35 0" />
+      <path d="M24 7l3 15 14 9v3l-14-6 1 11 4 3v2l-8-2-8 2v-2l4-3 1-11-14 6v-3l14-9z" />
     </svg>
   ),
 };
