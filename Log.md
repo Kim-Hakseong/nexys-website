@@ -113,13 +113,24 @@
 
 ### 현재 라이브
 - https://kim-hakseong.github.io/nexys-website/ — main 푸시 시 GitHub Actions 자동 배포
-- 미해결 TODO: 상담 위젯 실시간/카카오 실제 연동, 실제 사진·파트너 로고 교체, 카카오맵 정식 임베드, OG PNG
+- 미해결 TODO: 상담 위젯 실시간/카카오 실제 연동, 실제 사진·파트너 로고 교체, 카카오맵 정식 임베드 (OG PNG·파비콘은 완료)
 
 ## 2026-06-13 — Today's Challenges 외부 고해상도 이미지 적용
 - [DONE] 항목별 이미지를 프로젝트 시안 → **Unsplash 고해상도(상업적 무료, 출처표기 불필요)** 로 교체, 새 파일명 chal-1~4.jpg(1600px 최적화, 합계 1.4MB)
   - 01 비용·위험 → F-16 편대(Zg91t26xbrg) / 02 통합검증 복잡성 → 스위치·케이블(T-IN5o3kxyA) / 03 반복성·데이터 → 광섬유 데이터(JyRTi3LoQnc) / 04 국산화 → PCB(AEboEnOlpLc)
 - [NOTE] Unsplash License(상업적 사용 자유, attribution 불필요). 일부 사진은 Unsplash+ 유료라 다운로드 차단됨 → 무료 가능한 것으로 선별
 - [DONE] 03/04 이미지 재교체(주제 적합도 개선): 03 반복성·데이터 → 오실로스코프·계측기 측정(Pexels 132700), 04 국산화 → 엔지니어 회로기판 작업(Pexels 9242279). (기존 03 광섬유/04 PCB는 주제와 거리감)
+- [DONE] 04 추가 교체(완성도): 정면 얼굴 부담 → 손 납땜(chal-4c) → **정밀 프로브로 복잡한 보드 측정**(chal-4d, Pexels 6755135, 다크·전문적)으로 확정
+- [NOTE] **CDN 캐시 이슈**: 같은 파일명으로 이미지 재업로드 시 GitHub Pages 엣지 캐시가 옛 이미지 유지(강력새로고침으로도 안 바뀜). 해결 = **새 파일명 사용**(chal-3b/4b/4c/4d 등). 이후 이미지 교체는 새 파일명 원칙
+
+## 2026-06-13 — 헤더 NI Official Alliance 배지
+- [DONE] 인스타그램 아이콘 우측에 NI 배지 추가 → 이미지 배지 → **HTML/CSS 재제작**(녹색 NI 마크 + 'Official Alliance' 텍스트는 상단 탭 폰트 JetBrains Mono, 둥근 pill 테두리, 약 1.8배). `ni-mark.png`
+
+## 2026-06-13 — 무인기 지상점검장비 이미지 교체
+- [DONE] 케이스02(무인기 지상점검장비)의 image + figures 전부를 **점검장비 구성 다이어그램**(`uav-gte-diagram.png`)으로 교체 → 카드/슬라이더/Industries/연관/상세 전체 반영
+
+## 2026-06-13 — 브라우저 탭 파비콘 교체
+- [DONE] 파비콘을 **NXS/NEXYS 원형 로고**(`favicon-nxs.png`, 512px)로 교체. icon/apple/shortcut 갱신. (파비콘은 브라우저가 강하게 캐싱 → 탭 닫았다 열기 권장)
 
 ## 2026-06-13 — SEO / AEO / GEO 최적화 (화면 변화 0, 비가시 영역만)
 - [확인] 빌드 방식은 이미 SSG(output:'export') — 전 페이지 정적 사전렌더
