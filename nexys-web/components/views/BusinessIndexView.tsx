@@ -1,37 +1,107 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
-import { Ph, CtaBand } from "@/components/ui";
+import { CtaBand } from "@/components/ui";
 import { useLang } from "@/lib/i18n";
 
-const DIVISIONS = [
+type Div = {
+  href: string;
+  tag: string;
+  name: string;
+  nameEn: string;
+  icon: React.ReactNode;
+  desc: string;
+  descEn: string;
+  bullets: string[];
+  bulletsEn: string[];
+};
+
+const ICON = {
+  system: (
+    <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="dept-card__icon" aria-hidden="true">
+      <rect x="14" y="14" width="20" height="20" rx="2" />
+      <rect x="20.5" y="20.5" width="7" height="7" rx="1" />
+      <path d="M19 14V9M29 14V9M19 39v-5M29 39v-5M14 19H9M14 29H9M39 19h-5M39 29h-5" />
+    </svg>
+  ),
+  engineering: (
+    <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="dept-card__icon" aria-hidden="true">
+      <circle cx="24" cy="24" r="7" />
+      <path d="M24 8v5M24 35v5M8 24h5M35 24h5M12.7 12.7l3.5 3.5M31.8 31.8l3.5 3.5M35.3 12.7l-3.5 3.5M16.2 31.8l-3.5 3.5" />
+    </svg>
+  ),
+  research: (
+    <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="dept-card__icon" aria-hidden="true">
+      <circle cx="24" cy="35" r="2.4" fill="currentColor" stroke="none" />
+      <path d="M16.5 31a11 11 0 0 1 15 0" />
+      <path d="M11.5 26a18 18 0 0 1 25 0" />
+      <path d="M6.5 21a25 25 0 0 1 35 0" />
+    </svg>
+  ),
+};
+
+const DIVISIONS: Div[] = [
   {
     href: "/business/system",
+    tag: "System",
     name: "시스템 사업부",
     nameEn: "System Dept.",
-    tag: "System",
-    img: "/images/hils-hmi.jpg",
-    blurb: "Test Automation 설계, 분산 제어(DCS), 데이터 취득·분석, 시험지원·유지보수까지 제어·계측 시스템을 통합 구축합니다.",
-    blurbEn: "Integrated control & measurement systems — test automation design, distributed control (DCS), data acquisition & analysis, and test support.",
+    icon: ICON.system,
+    desc: "Test Automation System 설계, 제어·계측 시스템의 H/W·S/W 개발 및 통합 구축을 수행합니다.",
+    descEn:
+      "Designs Test Automation Systems and develops/integrates the hardware and software of control & measurement systems.",
+    bullets: [
+      "분산 제어 시스템 (DCS / RT Based)",
+      "Data 측정·분석 및 검사·시험 시스템",
+      "시험지원 및 유지보수",
+    ],
+    bulletsEn: [
+      "Distributed control (DCS / RT-based)",
+      "Data measurement·analysis & test systems",
+      "Test support & maintenance",
+    ],
   },
   {
     href: "/business/engineering",
+    tag: "Engineering",
     name: "엔지니어링 사업부",
     nameEn: "Engineering Dept.",
-    tag: "Engineering",
-    img: "/images/fuelrig.jpg",
-    blurb: "공장·설비 자동화, PLC/HMI 프로그래밍, 전기·계장 공사, 제어판넬·MCC 제작과 시운전을 일괄 수행합니다.",
-    blurbEn: "Turnkey plant automation, PLC/HMI programming, electrical & instrumentation works, and control-panel/MCC fabrication with commissioning.",
+    icon: ICON.engineering,
+    desc: "공장·설비 자동화 시스템 구축과 전기 설비 공사, Panel 제작까지 현장 전체를 책임집니다.",
+    descEn:
+      "Delivers factory/plant automation, electrical works and panel fabrication — the entire site, end to end.",
+    bullets: [
+      "PLC·HMI Programming",
+      "전기·계장 공사 및 Panel 제작",
+      "Sensor·계측기 설치 및 시운전",
+    ],
+    bulletsEn: [
+      "PLC·HMI programming",
+      "E&I works & panel fabrication",
+      "Sensor/instrument install & commissioning",
+    ],
   },
   {
     href: "/business/mil-aero",
+    tag: "MIL · Aerospace",
     name: "국방·항공기술 연구소",
     nameEn: "MIL · Aerospace Tech Center",
-    tag: "MIL · Aerospace",
-    img: "/images/thrust-tt.jpg",
-    blurb: "유·무인기 FLCC HILS, HILS/SIL 플랫폼, 무기체계 점검장비, 탑재 센서·PCB 설계를 연구·개발합니다.",
-    blurbEn: "R&D of FLCC HILS for UAV/manned aircraft, HILS/SIL platforms, weapon-system test equipment, and onboard sensor/PCB design.",
+    icon: ICON.research,
+    desc: "유/무인기 FLCC HILS, 무기체계 점검장비, 탑재 센서·PCB 설계까지 국방·항공 특화 기술을 개발합니다.",
+    descEn:
+      "Develops defense·aerospace technology — FLCC HILS for UAV/manned aircraft, weapon-system test equipment, onboard sensor/PCB design.",
+    bullets: [
+      "HILS/SIL 및 점검장비 Platform 구축",
+      "FLCC/VMC H/W·S/W 점검장비 개발",
+      "Interface·Signal Conditioning 설계",
+    ],
+    bulletsEn: [
+      "HILS/SIL & test-equipment platforms",
+      "FLCC/VMC HW·SW test equipment",
+      "Interface & signal conditioning design",
+    ],
   },
 ];
 
@@ -39,6 +109,45 @@ export default function BusinessIndexView() {
   const { lang } = useLang();
   const en = lang === "en";
   const t = (ko: React.ReactNode, e: React.ReactNode) => (en ? e : ko);
+  const gridRef = useRef<HTMLDivElement>(null);
+
+  // 3D 틸트 + 스포트라이트 좌표 추적 (정밀 포인터 + 모션 허용 시에만)
+  useEffect(() => {
+    const fine = window.matchMedia("(pointer: fine)").matches;
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const root = gridRef.current;
+    if (!fine || reduced || !root) return;
+    const cards = Array.from(
+      root.querySelectorAll<HTMLElement>(".dept-card")
+    );
+    const onMove = (e: PointerEvent) => {
+      const el = e.currentTarget as HTMLElement;
+      const r = el.getBoundingClientRect();
+      const px = (e.clientX - r.left) / r.width;
+      const py = (e.clientY - r.top) / r.height;
+      el.style.setProperty("--mx", (px * 100).toFixed(1) + "%");
+      el.style.setProperty("--my", (py * 100).toFixed(1) + "%");
+      const ry = (px - 0.5) * 7;
+      const rx = (0.5 - py) * 7;
+      el.style.transform = `perspective(900px) translateY(-6px) rotateX(${rx.toFixed(
+        2
+      )}deg) rotateY(${ry.toFixed(2)}deg)`;
+    };
+    const onLeave = (e: PointerEvent) => {
+      (e.currentTarget as HTMLElement).style.transform = "";
+    };
+    cards.forEach((el) => {
+      el.addEventListener("pointermove", onMove);
+      el.addEventListener("pointerleave", onLeave);
+    });
+    return () => {
+      cards.forEach((el) => {
+        el.removeEventListener("pointermove", onMove);
+        el.removeEventListener("pointerleave", onLeave);
+        el.style.transform = "";
+      });
+    };
+  }, []);
 
   return (
     <>
@@ -51,12 +160,12 @@ export default function BusinessIndexView() {
           <Reveal as="h1">
             {t(
               <>
-                세 개의 전문 조직,
+                설계부터 검증까지,
                 <br />
                 하나의 <em className="accent">통합 솔루션</em>
               </>,
               <>
-                Three specialized teams,
+                From design to verification,
                 <br />
                 one <em className="accent">integrated solution</em>
               </>
@@ -73,29 +182,27 @@ export default function BusinessIndexView() {
 
       <section className="section section--ink">
         <div className="wrap">
-          <div className="solutions">
+          <Reveal className="sec-head">
+            <span className="eyebrow">Business Units</span>
+          </Reveal>
+          <div className="dept-grid" ref={gridRef}>
             {DIVISIONS.map((d, i) => (
-              <Reveal delay={i} key={d.href}>
-                <Link className="solution" href={d.href}>
-                  <div className="solution__media">
-                    <Ph src={d.img} alt={en ? d.nameEn : d.name} />
-                  </div>
-                  <div className="solution__body">
-                    <span className="solution__tag">{d.tag}</span>
-                    <h3 className="solution__title">
-                      {en ? d.nameEn : d.name}
-                      {!en ? <small>{d.nameEn}</small> : null}
-                    </h3>
-                    <p className="solution__list" style={{ color: "var(--t-on-dark-dim)", fontSize: 15, lineHeight: 1.6 }}>
-                      {en ? d.blurbEn : d.blurb}
-                    </p>
-                    <div className="solution__foot">
-                      <span className="link-arrow">
-                        {t("자세히 보기", "Learn more")}{" "}
-                        <span className="arr">→</span>
-                      </span>
-                    </div>
-                  </div>
+              <Reveal as="div" delay={i} key={d.href} style={{ display: "flex" }}>
+                <Link className="dept-card has-spot" href={d.href}>
+                  {d.icon}
+                  <p className="dept-card__en">{d.tag}</p>
+                  <h3>{en ? d.nameEn : d.name}</h3>
+                  <p className="dept-card__desc">{en ? d.descEn : d.desc}</p>
+                  <ul>
+                    {(en ? d.bulletsEn : d.bullets).map((b) => (
+                      <li key={b}>{b}</li>
+                    ))}
+                  </ul>
+                  <span className="dept-card__more">
+                    {t("자세히 보기", "Learn more")}{" "}
+                    <span className="arr">→</span>
+                  </span>
+                  <span className="spotlight" aria-hidden="true"></span>
                 </Link>
               </Reveal>
             ))}

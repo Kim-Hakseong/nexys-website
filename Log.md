@@ -139,3 +139,8 @@
 - [DONE] GEO: `/llms.txt` `/llms-full.txt`(route handler, env-aware URL), robots에 AI 크롤러 명시 허용(GPTBot/ClaudeBot/PerplexityBot/Google-Extended 등), sitemap lastmod + 실서빙 origin 사용
 - [DECISION] FAQ 스키마는 보이는 FAQ 콘텐츠가 없어 정책상 생략(화면 불변 유지). 영문 /en 분리는 추후 옵션
 - [TODO/운영] 도메인 i-nexys.com 이전 시 NEXT_PUBLIC_SITE_ORIGIN 변경, Google Search Console·Bing 등록 + 사이트맵 제출
+
+## 2026-06-13 — 사업영역 개요: dept 카드(인터랙티브)로 교체
+- [DONE] /business 3개 사업부를 **이미지 카드 → 코드 기반 dept-card**로 교체(아이콘 인라인 SVG + EN태그 + 제목 + 설명 + 불릿). 사진 미사용
+- [DONE] 인터랙션(참고 코드 이식): 상단 레드 라인 호버, hover lift+그림자, **마우스 따라다니는 레드 스포트라이트 + 1회 스캔라인**, **3D 틸트**(pointermove, pointer:fine+모션허용 시). 색은 사이트 톤(#7a1020)·다크 테마로 매핑
+- [DONE] 각 카드 클릭 → 해당 사업부 페이지 이동(Link), KO/EN 유지
