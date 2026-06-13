@@ -36,7 +36,7 @@ const CHALLENGES = [
     labelEn: "Repeatability & data reliability",
     body: "동일 조건을 정확히 재현하고, 고속·고정밀로 데이터를 취득·저장·분석해야 결과를 신뢰할 수 있습니다.",
     bodyEn: "Results are trustworthy only when identical conditions are reproduced precisely and data is acquired, stored and analyzed at high speed and precision.",
-    img: "/images/chal-3.jpg",
+    img: "/images/chal-3b.jpg",
   },
   {
     no: "04",
@@ -44,7 +44,7 @@ const CHALLENGES = [
     labelEn: "Localizing core technology",
     body: "수입 의존도가 높은 HILS·점검장비 플랫폼을 국산 기술로 대체해, 유지보수와 기술 주권을 확보해야 합니다.",
     bodyEn: "Import-dependent HILS and test-equipment platforms must be replaced with domestic technology to secure maintainability and technological sovereignty.",
-    img: "/images/chal-4.jpg",
+    img: "/images/chal-4b.jpg",
   },
 ];
 
