@@ -44,7 +44,7 @@ const CHALLENGES = [
     labelEn: "Localizing core technology",
     body: "수입 의존도가 높은 HILS·점검장비 플랫폼을 국산 기술로 대체해, 유지보수와 기술 주권을 확보해야 합니다.",
     bodyEn: "Import-dependent HILS and test-equipment platforms must be replaced with domestic technology to secure maintainability and technological sovereignty.",
-    img: "/images/chal-4c.jpg",
+    img: "/images/chal-4d.jpg",
   },
 ];
 
