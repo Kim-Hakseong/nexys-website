@@ -114,3 +114,8 @@
 ### 현재 라이브
 - https://kim-hakseong.github.io/nexys-website/ — main 푸시 시 GitHub Actions 자동 배포
 - 미해결 TODO: 상담 위젯 실시간/카카오 실제 연동, 실제 사진·파트너 로고 교체, 카카오맵 정식 임베드, OG PNG
+
+## 2026-06-13 — Today's Challenges 외부 고해상도 이미지 적용
+- [DONE] 항목별 이미지를 프로젝트 시안 → **Unsplash 고해상도(상업적 무료, 출처표기 불필요)** 로 교체, 새 파일명 chal-1~4.jpg(1600px 최적화, 합계 1.4MB)
+  - 01 비용·위험 → F-16 편대(Zg91t26xbrg) / 02 통합검증 복잡성 → 스위치·케이블(T-IN5o3kxyA) / 03 반복성·데이터 → 광섬유 데이터(JyRTi3LoQnc) / 04 국산화 → PCB(AEboEnOlpLc)
+- [NOTE] Unsplash License(상업적 사용 자유, attribution 불필요). 일부 사진은 Unsplash+ 유료라 다운로드 차단됨 → 무료 가능한 것으로 선별

@@ -20,7 +20,7 @@ const CHALLENGES = [
     labelEn: "Cost & risk of real-hardware testing",
     body: "고가의 실장비를 반복 시험에 투입하기 어렵고, 비정상·한계 조건 시험은 장비 손상과 안전사고 위험을 동반합니다. 시험실 안에서 위험을 끝내야 합니다.",
     bodyEn: "Expensive hardware is hard to commit to repeated testing, and off-nominal or limit-condition tests risk equipment damage and accidents. Risk must end inside the lab.",
-    img: "/images/hero-jet.jpg",
+    img: "/images/chal-1.jpg",
   },
   {
     no: "02",
@@ -28,7 +28,7 @@ const CHALLENGES = [
     labelEn: "Complexity of integrated verification",
     body: "제어기·센서·통신(1553B·CAN·RS422)·유압·전기 계통이 얽힌 시스템을 단계별로, 그리고 통합으로 검증해야 합니다.",
     bodyEn: "Systems entangling controllers, sensors, communications (1553B·CAN·RS422), hydraulics and electrical lines must be verified stage by stage and as a whole.",
-    img: "/images/lru.jpg",
+    img: "/images/chal-2.jpg",
   },
   {
     no: "03",
@@ -36,7 +36,7 @@ const CHALLENGES = [
     labelEn: "Repeatability & data reliability",
     body: "동일 조건을 정확히 재현하고, 고속·고정밀로 데이터를 취득·저장·분석해야 결과를 신뢰할 수 있습니다.",
     bodyEn: "Results are trustworthy only when identical conditions are reproduced precisely and data is acquired, stored and analyzed at high speed and precision.",
-    img: "/images/hils-hmi.jpg",
+    img: "/images/chal-3.jpg",
   },
   {
     no: "04",
@@ -44,7 +44,7 @@ const CHALLENGES = [
     labelEn: "Localizing core technology",
     body: "수입 의존도가 높은 HILS·점검장비 플랫폼을 국산 기술로 대체해, 유지보수와 기술 주권을 확보해야 합니다.",
     bodyEn: "Import-dependent HILS and test-equipment platforms must be replaced with domestic technology to secure maintainability and technological sovereignty.",
-    img: "/images/pcb.jpg",
+    img: "/images/chal-4.jpg",
   },
 ];
 
