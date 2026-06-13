@@ -69,7 +69,7 @@ export default function Home() {
           {/* 애니메이션 WebP — GIF처럼 자동재생 보장(자동재생 정책 영향 없음). A→B 시퀀스 */}
           <img
             className="hero__img is-active"
-            src={asset("/videos/hero.webp")}
+            src={asset("/videos/hero-v2.webp")}
             alt=""
             aria-hidden="true"
           />
