@@ -806,6 +806,17 @@ body.menu-open .consult { display: none; }
 .tl-node { position:absolute; left:-31px; top: clamp(30px,3.6vw,49px); width:12px; height:12px; border-radius:50%; background: var(--ink); border:2px solid rgba(255,255,255,.28); z-index:1; }
 @media(max-width:680px){ .timeline--scroll { padding-left: 26px; } .timeline__track { left:5px; } .tl-node { left:-24px; width:10px; height:10px; } }
 
-/* NI Official Alliance 배지 (인스타 아이콘 우측) */
-.nav__util .ni-badge { height: 20px; width: auto; display: block; opacity: .92; }
-.mobile-menu__util .ni-badge { height: 22px; width: auto; display: block; opacity: .92; }
+/* NI Official Alliance 배지 — 마크 + 텍스트, 둥근 알약 (인스타 아이콘 우측) */
+.ni-alliance {
+  display: inline-flex; align-items: center; gap: 9px;
+  border: 1px solid var(--line-dark-2); border-radius: 999px;
+  padding: 8px 16px 8px 13px; white-space: nowrap;
+  transition: border-color .3s var(--ease);
+}
+.ni-alliance:hover { border-color: rgba(255,255,255,.5); }
+.ni-alliance__mark { height: 19px; width: auto; display: block; }
+.ni-alliance__txt {
+  font-family: var(--mono); font-weight: 500; font-size: 13px; letter-spacing: .04em;
+  color: var(--t-on-dark); line-height: 1;
+}
+.mobile-menu__util { flex-wrap: wrap; row-gap: 16px; }

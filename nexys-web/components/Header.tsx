@@ -17,6 +17,19 @@ function InstagramIcon() {
   );
 }
 
+function NiAlliance() {
+  return (
+    <span className="ni-alliance" aria-label="NI Official Alliance Partner">
+      <img
+        className="ni-alliance__mark"
+        src={asset("/images/ni-mark.png")}
+        alt="NI"
+      />
+      <span className="ni-alliance__txt">Official Alliance</span>
+    </span>
+  );
+}
+
 function LangSwitch() {
   const { lang, setLang } = useLang();
   return (
@@ -110,11 +123,7 @@ export default function Header() {
               >
                 <InstagramIcon />
               </a>
-              <img
-                className="ni-badge"
-                src={asset("/images/ni-alliance.png")}
-                alt="NI Official Alliance Partner"
-              />
+              <NiAlliance />
             </div>
           </div>
 
@@ -153,11 +162,7 @@ export default function Header() {
             <InstagramIcon />
             <span>Instagram</span>
           </a>
-          <img
-            className="ni-badge"
-            src={asset("/images/ni-alliance.png")}
-            alt="NI Official Alliance Partner"
-          />
+          <NiAlliance />
         </div>
         <div className="mobile-menu__foot">
           <span>TEL {SITE.tel}</span>
