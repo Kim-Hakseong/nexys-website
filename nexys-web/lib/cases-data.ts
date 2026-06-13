@@ -96,8 +96,8 @@ export const CASES: CaseItem[] = [
     desc: "통신·Digital·Analog 신호 입출력 점검, 실시간 Buffered 데이터 수집 및 Replay.",
     descEn:
       "Communication/digital/analog I/O inspection with real-time buffered acquisition and replay.",
-    image: IMG("hero-wing.jpg"),
-    figures: [IMG("lru.jpg"), IMG("pcb.jpg")],
+    image: IMG("uav-gte-diagram.png"),
+    figures: [IMG("uav-gte-diagram.png"), IMG("uav-gte-diagram.png")],
     cats: ["defense"],
     sector: "국방·항공 / 점검장비",
     sectorEn: "Defense·Aerospace / Test Equipment",
